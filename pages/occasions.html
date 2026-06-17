@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Occasions — SweetCraft Bakery</title>
+    
+    
+    
+    
+
+    <!-- Tailwind CSS (CDN) -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <script src="../assets/js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- ========================
+         SECTION: Navbar
+    ======================== -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-bg">
+        <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center gap-1.5 group">
+                <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 group-hover:bg-secondary transition-all duration-300">
+                    <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
+                </div>
+                <span class="text-2xl font-heading font-bold tracking-tight text-primary transition-colors duration-300 group-hover:text-accent">
+                    Sweet<span class="text-accent font-medium italic transition-colors duration-300 group-hover:text-primary">Craft</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <!-- Home Dropdown -->
+                <div class="relative group cursor-pointer">
+                    <span class="hover:text-primary transition-colors flex items-center gap-1">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </span>
+                    <div class="absolute left-0 top-full pt-4 hidden group-hover:block opacity-0 group-hover:opacity-100 transition-opacity min-w-40 z-50">
+                        <div class="bg-[#fffdf9] dark:bg-[#1a1612] border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1">
+                            <a href="../index.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Home 1</a>
+                            <a href="home-2.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Home 2</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="hover:text-primary transition-colors">Gallery</a>
+                <a href="flavors.html" class="hover:text-primary transition-colors">Flavors</a>
+                <a href="occasions.html" class="hover:text-primary transition-colors">Occasions</a>
+                <a href="contact.html" class="hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dashboard Dropdown -->
+                <div class="relative group cursor-pointer">
+                    <span class="hover:text-primary transition-colors flex items-center gap-1">Dashboard <i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                    <div class="absolute left-0 top-full pt-4 hidden group-hover:block opacity-0 group-hover:opacity-100 transition-opacity min-w-48 z-50">
+                        <div class="bg-[#fffdf9] dark:bg-[#1a1612] border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1">
+                            <a href="user-dashboard.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-3">
+                <button class="rtl-toggle px-3.5 py-2 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
+                    <span class="rtl-only">RTL</span>
+                    <span class="ltr-only">LTR</span>
+                </button>
+                <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon" class="w-4.5 h-4.5 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-4.5 h-4.5 block dark:hidden"></i>
+                </button>
+                <a href="../auth/login.html" class="btn-secondary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Login</a>
+                <a href="order-now.html" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Order Now &rarr;</a>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="flex lg:hidden items-center gap-2">
+                <button id="mobile-menu-btn" class="p-2.5 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text text-opacity-90 hover:text-primary transition-all duration-300 flex items-center justify-center border border-border border-opacity-30 bg-bg bg-opacity-50 backdrop-blur" aria-label="Open Menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 w-80 bg-[#fffdf9] dark:bg-[#1a1612] shadow-2xl z-[100] flex flex-col">
+        <div class="flex items-center justify-between p-5 border-b border-border">
+            <span class="text-xl font-heading font-bold text-primary">Menu</span>
+            <button id="close-menu-btn" class="p-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text text-opacity-90 hover:text-primary transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4 px-4 flex flex-col gap-5">
+            <!-- Navigation Links -->
+            <div class="flex flex-col gap-1">
+                <span class="px-2 text-[10px] font-bold text-text text-opacity-90 uppercase tracking-wider block mb-1">Navigation</span>
+                
+                <!-- Home Dropdown on Mobile -->
+                <details class="group/dropdown select-none">
+                    <summary class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-3">
+                            <i data-lucide="home" class="w-4 h-4 text-primary"></i>
+                            <span>Home</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-text  group-open/dropdown:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="mt-1 ml-7 flex flex-col gap-1 border-l border-border border-opacity-90 pl-3">
+                        <a href="../index.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary font-medium">Home 1</a>
+                        <a href="home-2.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">Home 2</a>
+                    </div>
+                </details>
+
+                <a href="gallery.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="image" class="w-4 h-4 text-primary"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="flavors.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="cake" class="w-4 h-4 text-primary"></i>
+                    <span>Flavors</span>
+                </a>
+                <a href="occasions.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="party-popper" class="w-4 h-4 text-primary"></i>
+                    <span>Occasions</span>
+                </a>
+                <a href="contact.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="mail" class="w-4 h-4 text-primary"></i>
+                    <span>Contact</span>
+                </a>
+
+                <!-- Dashboard Dropdown on Mobile -->
+                <details class="group/dropdown select-none">
+                    <summary class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-3">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 text-primary"></i>
+                            <span>Dashboard</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-text  group-open/dropdown:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="mt-1 ml-7 flex flex-col gap-1 border-l border-border border-opacity-90 pl-3">
+                        <a href="user-dashboard.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">Admin Dashboard</a>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Toggles (RTL and Dark Mode) -->
+            <div class="flex flex-col gap-3 border-t border-border border-opacity-90 pt-4">
+                <span class="px-2 text-[10px] font-bold text-text text-opacity-90 uppercase tracking-wider block">Preferences</span>
+                <div class="flex justify-between items-center px-2">
+                    <span class="text-sm font-medium text-text opacity-90">Layout Direction</span>
+                    <button class="rtl-toggle px-3.5 py-1.5 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
+                        <span class="rtl-only">RTL</span>
+                        <span class="ltr-only">LTR</span>
+                    </button>
+                </div>
+                <div class="flex justify-between items-center px-2">
+                    <span class="text-sm font-medium text-text opacity-90">Dark Mode</span>
+                    <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                        <i data-lucide="moon" class="w-4.5 h-4.5 hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-4.5 h-4.5 block dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Actions CTA -->
+            <div class="flex flex-col gap-2 pt-2">
+                <a href="../auth/login.html" class="btn-secondary py-2.5 px-5 text-sm hover:scale-105 transition-all duration-300 w-full justify-center gap-2">
+                    <i data-lucide="log-in" class="w-4.5 h-4.5"></i>
+                    <span>Login</span>
+                </a>
+                <a href="order-now.html" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300 w-full">
+                    <span>Order Now &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Main Content -->
+    <main class="flex-1 mt-[72px]">
+        <!-- Header -->
+        <section class="py-20 bg-secondary/30 text-center border-b border-border dark:border-transparent">
+            <div class="container mx-auto px-4">
+                <h1 class="text-5xl font-heading font-bold mb-4 text-primary">Shop by Occasion</h1>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto">From elegant weddings to joyful birthdays, we have the perfect centerpiece for your special day.</p>
+            </div>
+        </section>
+
+        <!-- Occasions Grid -->
+        <section class="py-20 lg:py-24 bg-bg">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Occasion Card: Weddings -->
+                    <a href="gallery.html?filter=wedding" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
+                        <img src="../assets/images/occasion_wedding_1781672529558.png" alt="Weddings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Weddings & Anniversaries</h2>
+                            <p class="text-white/80 mb-4">Elegant tiered cakes designed to match your theme.</p>
+                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Occasion Card: Birthdays -->
+                    <a href="gallery.html?filter=birthday" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
+                        <img src="../assets/images/chocolate_drip_cake.png" alt="Birthdays" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Birthdays</h2>
+                            <p class="text-white/80 mb-4">Fun, colorful, and delicious creations for all ages.</p>
+                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Occasion Card: Baby Showers -->
+                    <a href="gallery.html?filter=event" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
+                        <img src="../assets/images/occasion_baby_1781672583388.png" alt="Baby Showers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Baby Showers</h2>
+                            <p class="text-white/80 mb-4">Adorable cakes, cupcakes, and sweet tables to celebrate new life.</p>
+                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Occasion Card: Corporate -->
+                    <a href="gallery.html?filter=event" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
+                        <img src="../assets/images/occasion_corporate_1781672561343.png" alt="Corporate Events" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Corporate Events</h2>
+                            <p class="text-white/80 mb-4">Branded cupcakes, macaron towers, and impressive event centerpieces.</p>
+                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary bg-opacity-30 border-t border-border dark:border-transparent border-opacity-90 pt-12 pb-6 mt-auto">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-1.5 group mb-4">
+                        <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 group-hover:bg-secondary transition-all duration-300">
+                            <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-primary transition-colors duration-300 group-hover:text-accent">
+                            Sweet<span class="text-accent font-medium italic transition-colors duration-300 group-hover:text-primary">Craft</span>
+                        </span>
+                    </a>
+                    <p class="text-sm text-text opacity-90 leading-relaxed max-w-xs">Artisan bakery specializing in custom cakes for weddings, birthdays, and celebrations. Baked with love and organic ingredients.</p>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Explore</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="gallery.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Our Gallery</a></li>
+                        <li><a href="flavors.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Flavor Catalog</a></li>
+                        <li><a href="about.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Support</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="contact.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Contact Us</a></li>
+                        <li><a href="../auth/login.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Login to Dashboard</a></li>
+                        <li><a href="#" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Newsletter</h3>
+                    <p class="text-sm text-text opacity-90 mb-3 leading-relaxed">Subscribe for seasonal flavors and exclusive discounts.</p>
+                    <form action="#" class="relative max-w-sm mt-3">
+                        <input type="email" placeholder="Email Address" required class="w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                        <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 w-10 shrink-0 rounded-xl bg-[#b5834a] hover:bg-[#926636] text-white flex items-center justify-center transition-all duration-300 shadow-sm" aria-label="Subscribe">
+                            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 SweetCraft Bakery. All rights reserved.</p>
+                <div class="flex gap-2.5">
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Instagram">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Facebook">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Twitter">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

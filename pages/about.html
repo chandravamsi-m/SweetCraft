@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — SweetCraft Bakery</title>
+    
+    
+    
+    
+
+    <!-- Tailwind CSS (CDN) -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <script src="../assets/js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- ========================
+         SECTION: Navbar
+    ======================== -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-bg">
+        <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center gap-1.5 group">
+                <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 group-hover:bg-secondary transition-all duration-300">
+                    <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
+                </div>
+                <span class="text-2xl font-heading font-bold tracking-tight text-primary transition-colors duration-300 group-hover:text-accent">
+                    Sweet<span class="text-accent font-medium italic transition-colors duration-300 group-hover:text-primary">Craft</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <!-- Home Dropdown -->
+                <div class="relative group cursor-pointer">
+                    <span class="hover:text-primary transition-colors flex items-center gap-1">
+                        Home <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </span>
+                    <div class="absolute left-0 top-full pt-4 hidden group-hover:block opacity-0 group-hover:opacity-100 transition-opacity min-w-40 z-50">
+                        <div class="bg-[#fffdf9] dark:bg-[#1a1612] border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1">
+                            <a href="../index.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Home 1</a>
+                            <a href="home-2.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Home 2</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="hover:text-primary transition-colors">Gallery</a>
+                <a href="flavors.html" class="hover:text-primary transition-colors">Flavors</a>
+                <a href="occasions.html" class="hover:text-primary transition-colors">Occasions</a>
+                <a href="contact.html" class="hover:text-primary transition-colors">Contact</a>
+                
+                <!-- Dashboard Dropdown -->
+                <div class="relative group cursor-pointer">
+                    <span class="hover:text-primary transition-colors flex items-center gap-1">Dashboard <i data-lucide="chevron-down" class="w-4 h-4"></i></span>
+                    <div class="absolute left-0 top-full pt-4 hidden group-hover:block opacity-0 group-hover:opacity-100 transition-opacity min-w-48 z-50">
+                        <div class="bg-[#fffdf9] dark:bg-[#1a1612] border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1">
+                            <a href="user-dashboard.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">User Dashboard</a>
+                            <a href="admin-dashboard.html" class="px-4 py-2 hover:bg-secondary rounded-lg transition-colors font-medium text-sm text-text">Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-3">
+                <button class="rtl-toggle px-3.5 py-2 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
+                    <span class="rtl-only">RTL</span>
+                    <span class="ltr-only">LTR</span>
+                </button>
+                <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon" class="w-4.5 h-4.5 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-4.5 h-4.5 block dark:hidden"></i>
+                </button>
+                <a href="../auth/login.html" class="btn-secondary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Login</a>
+                <a href="order-now.html" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Order Now &rarr;</a>
+            </div>
+
+            <!-- Mobile Actions -->
+            <div class="flex lg:hidden items-center gap-2">
+                <button id="mobile-menu-btn" class="p-2.5 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text text-opacity-90 hover:text-primary transition-all duration-300 flex items-center justify-center border border-border border-opacity-30 bg-bg bg-opacity-50 backdrop-blur" aria-label="Open Menu">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 w-80 bg-[#fffdf9] dark:bg-[#1a1612] shadow-2xl z-[100] flex flex-col">
+        <div class="flex items-center justify-between p-5 border-b border-border">
+            <span class="text-xl font-heading font-bold text-primary">Menu</span>
+            <button id="close-menu-btn" class="p-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text text-opacity-90 hover:text-primary transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <div class="flex-1 overflow-y-auto py-4 px-4 flex flex-col gap-5">
+            <!-- Navigation Links -->
+            <div class="flex flex-col gap-1">
+                <span class="px-2 text-[10px] font-bold text-text text-opacity-90 uppercase tracking-wider block mb-1">Navigation</span>
+                
+                <!-- Home Dropdown on Mobile -->
+                <details class="group/dropdown select-none">
+                    <summary class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-3">
+                            <i data-lucide="home" class="w-4 h-4 text-primary"></i>
+                            <span>Home</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-text  group-open/dropdown:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="mt-1 ml-7 flex flex-col gap-1 border-l border-border border-opacity-90 pl-3">
+                        <a href="../index.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary font-medium">Home 1</a>
+                        <a href="home-2.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">Home 2</a>
+                    </div>
+                </details>
+
+                <a href="gallery.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="image" class="w-4 h-4 text-primary"></i>
+                    <span>Gallery</span>
+                </a>
+                <a href="flavors.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="cake" class="w-4 h-4 text-primary"></i>
+                    <span>Flavors</span>
+                </a>
+                <a href="occasions.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="party-popper" class="w-4 h-4 text-primary"></i>
+                    <span>Occasions</span>
+                </a>
+                <a href="contact.html" class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all">
+                    <i data-lucide="mail" class="w-4 h-4 text-primary"></i>
+                    <span>Contact</span>
+                </a>
+
+                <!-- Dashboard Dropdown on Mobile -->
+                <details class="group/dropdown select-none">
+                    <summary class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text font-medium text-sm transition-all cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-3">
+                            <i data-lucide="layout-dashboard" class="w-4 h-4 text-primary"></i>
+                            <span>Dashboard</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-text  group-open/dropdown:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="mt-1 ml-7 flex flex-col gap-1 border-l border-border border-opacity-90 pl-3">
+                        <a href="user-dashboard.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block py-1.5 text-sm text-text opacity-90 hover:text-primary">Admin Dashboard</a>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Toggles (RTL and Dark Mode) -->
+            <div class="flex flex-col gap-3 border-t border-border border-opacity-90 pt-4">
+                <span class="px-2 text-[10px] font-bold text-text text-opacity-90 uppercase tracking-wider block">Preferences</span>
+                <div class="flex justify-between items-center px-2">
+                    <span class="text-sm font-medium text-text opacity-90">Layout Direction</span>
+                    <button class="rtl-toggle px-3.5 py-1.5 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
+                        <span class="rtl-only">RTL</span>
+                        <span class="ltr-only">LTR</span>
+                    </button>
+                </div>
+                <div class="flex justify-between items-center px-2">
+                    <span class="text-sm font-medium text-text opacity-90">Dark Mode</span>
+                    <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                        <i data-lucide="moon" class="w-4.5 h-4.5 hidden dark:block"></i>
+                        <i data-lucide="sun" class="w-4.5 h-4.5 block dark:hidden"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Actions CTA -->
+            <div class="flex flex-col gap-2 pt-2">
+                <a href="../auth/login.html" class="btn-secondary py-2.5 px-5 text-sm hover:scale-105 transition-all duration-300 w-full justify-center gap-2">
+                    <i data-lucide="log-in" class="w-4.5 h-4.5"></i>
+                    <span>Login</span>
+                </a>
+                <a href="order-now.html" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300 w-full">
+                    <span>Order Now &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Main Content -->
+    <main class="flex-1 mt-[72px]">
+        <!-- Header -->
+        <section class="py-20 bg-secondary/30 text-center border-b border-border dark:border-transparent">
+            <div class="container mx-auto px-4">
+                <h1 class="text-5xl font-heading font-bold mb-4 text-primary">About Us</h1>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto">Meet the passionate team bringing sweet dreams to life.</p>
+            </div>
+        </section>
+
+        <!-- Our Story -->
+        <section class="py-20 lg:py-24 bg-bg">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <div class="w-full md:w-1/2">
+                        <img src="../assets/images/blog_1_1781672598240.png" alt="Bakery Team" class="rounded-2xl shadow-xl w-full">
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <span class="text-accent font-semibold tracking-wider text-sm mb-2 block uppercase">Our Journey</span>
+                        <h2 class="text-4xl font-heading font-bold text-primary mb-6">From a home kitchen to your celebrations.</h2>
+                        <p class="opacity-90 leading-relaxed mb-6">SweetCraft was born out of a genuine love for baking and art. We combine traditional pastry techniques with modern design to create cakes that are not only visually stunning but undeniably delicious.</p>
+                        <p class="opacity-90 leading-relaxed">Our mission is simple: To craft the centerpiece of your most cherished memories. Every order is a canvas, and every flavor is a celebration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="py-20 lg:py-24 bg-secondary/30 border-y border-border dark:border-transparent">
+            <div class="container mx-auto px-4 md:px-6 text-center">
+                <span class="text-accent font-semibold tracking-wider text-sm mb-2 block uppercase">The Team</span>
+                <h2 class="text-4xl font-heading font-bold text-primary mb-12">Meet the Bakers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-bg p-8 rounded-2xl shadow-sm">
+                        <img src="../assets/images/team_maria_1781672439014.png" alt="Maria" class="w-32 h-32 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-xl font-bold">Maria Jenkins</h3>
+                        <p class="text-sm opacity-90 mb-4">Head Pastry Chef & Founder</p>
+                        <p class="text-sm opacity-90">Specializes in delicate sugar flowers and classic buttercream.</p>
+                    </div>
+                    <div class="bg-bg p-8 rounded-2xl shadow-sm">
+                        <img src="../assets/images/team_david_1781672452586.png" alt="David" class="w-32 h-32 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-xl font-bold">David Chen</h3>
+                        <p class="text-sm opacity-90 mb-4">Flavor Specialist</p>
+                        <p class="text-sm opacity-90">The mastermind behind our unique fillings and seasonal compotes.</p>
+                    </div>
+                    <div class="bg-bg p-8 rounded-2xl shadow-sm">
+                        <img src="../assets/images/team_sarah_1781672464194.png" alt="Sarah" class="w-32 h-32 rounded-full object-cover mx-auto mb-4">
+                        <h3 class="text-xl font-bold">Sarah Dubois</h3>
+                        <p class="text-sm opacity-90 mb-4">Lead Cake Artist</p>
+                        <p class="text-sm opacity-90">Transforms cakes into modern art with fondant and sculpted elements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <!-- Our Philosophy -->
+        <section class="py-20 lg:py-24 bg-bg">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="max-w-4xl mx-auto text-center mb-16">
+                    <span class="text-accent font-semibold tracking-wider text-sm mb-2 block uppercase">Core Values</span>
+                    <h2 class="text-4xl font-heading font-bold text-primary">Our Philosophy</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 border border-border rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <i data-lucide="heart" class="w-10 h-10 text-accent mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Baked with Love</h3>
+                        <p class="opacity-90">We believe that every ingredient matters. That's why we source locally and organic whenever possible.</p>
+                    </div>
+                    <div class="p-8 border border-border rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <i data-lucide="palette" class="w-10 h-10 text-accent mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Artistic Precision</h3>
+                        <p class="opacity-90">A cake is a canvas. Our artists spend hours ensuring every petal and texture is meticulously crafted.</p>
+                    </div>
+                    <div class="p-8 border border-border rounded-2xl text-center shadow-sm hover:shadow-md transition-shadow">
+                        <i data-lucide="users" class="w-10 h-10 text-accent mx-auto mb-6"></i>
+                        <h3 class="text-xl font-bold mb-4">Community First</h3>
+                        <p class="opacity-90">We are proud to be part of your celebrations and give back to our local community through food banks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="py-20 lg:py-24 bg-secondary/30">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="max-w-4xl mx-auto text-center mb-16">
+                    <h2 class="text-4xl font-heading font-bold text-primary">Our Timeline</h2>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-border before:to-transparent">
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
+                            <i data-lucide="flag" class="w-4 h-4"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-bg border border-border shadow-sm">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-primary">The Beginning</h3>
+                                <time class="font-medium text-accent">2018</time>
+                            </div>
+                            <p class="opacity-90 text-sm">Maria Jenkins started baking custom cakes in her home kitchen for friends and family.</p>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
+                            <i data-lucide="store" class="w-4 h-4"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-bg border border-border shadow-sm">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-primary">First Storefront</h3>
+                                <time class="font-medium text-accent">2020</time>
+                            </div>
+                            <p class="opacity-90 text-sm">Opened our first flagship bakery in downtown Pastry City, expanding to a team of 5.</p>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
+                            <i data-lucide="award" class="w-4 h-4"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-bg border border-border shadow-sm">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-primary">National Award</h3>
+                                <time class="font-medium text-accent">2023</time>
+                            </div>
+                            <p class="opacity-90 text-sm">Won the "Best Wedding Cake Design" at the National Pastry Expo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary bg-opacity-30 border-t border-border dark:border-transparent border-opacity-90 pt-12 pb-6 mt-auto">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="../index.html" class="flex items-center gap-1.5 group mb-4">
+                        <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 group-hover:bg-secondary transition-all duration-300">
+                            <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <span class="text-2xl font-heading font-bold tracking-tight text-primary transition-colors duration-300 group-hover:text-accent">
+                            Sweet<span class="text-accent font-medium italic transition-colors duration-300 group-hover:text-primary">Craft</span>
+                        </span>
+                    </a>
+                    <p class="text-sm text-text opacity-90 leading-relaxed max-w-xs">Artisan bakery specializing in custom cakes for weddings, birthdays, and celebrations. Baked with love and organic ingredients.</p>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Explore</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="gallery.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Our Gallery</a></li>
+                        <li><a href="flavors.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Flavor Catalog</a></li>
+                        <li><a href="about.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Our Story</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Support</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="contact.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Contact Us</a></li>
+                        <li><a href="../auth/login.html" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Login to Dashboard</a></li>
+                        <li><a href="#" class="text-text opacity-90 hover:opacity-100 hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block font-medium">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Newsletter</h3>
+                    <p class="text-sm text-text opacity-90 mb-3 leading-relaxed">Subscribe for seasonal flavors and exclusive discounts.</p>
+                    <form action="#" class="relative max-w-sm mt-3">
+                        <input type="email" placeholder="Email Address" required class="w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                        <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 w-10 shrink-0 rounded-xl bg-[#b5834a] hover:bg-[#926636] text-white flex items-center justify-center transition-all duration-300 shadow-sm" aria-label="Subscribe">
+                            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 SweetCraft Bakery. All rights reserved.</p>
+                <div class="flex gap-2.5">
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Instagram">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Facebook">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Twitter">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

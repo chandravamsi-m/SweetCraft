@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — SweetCraft Bakery</title>
+    
+    
+    
+    
+
+    <!-- Tailwind CSS (CDN) -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <script src="../assets/js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+<body class="antialiased min-h-screen bg-bg flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Mobile Header -->
+    <div class="md:hidden bg-bg border-b border-border p-4 flex justify-between items-center z-50">
+        <div class="font-heading font-bold text-primary flex items-center gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+            Admin
+        </div>
+        <button id="dashboard-mobile-menu-btn" class="p-2 rounded-lg hover:bg-secondary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside id="dashboard-sidebar" class="w-full md:w-64 lg:w-72 bg-bg border-r border-border flex flex-col h-screen absolute md:relative z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-xl md:shadow-none">
+        <div class="p-6 hidden md:block border-b border-border">
+            <a href="../index.html" class="text-2xl font-heading font-bold text-primary flex items-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                AdminPanel
+            </a>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+            <div class="text-xs font-bold text-accent uppercase tracking-wider mb-2 ml-4">Main</div>
+            <a data-target="admin-overview" class="sidebar-link active">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                Dashboard
+            </a>
+            <a data-target="admin-orders" class="sidebar-link">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                Order Management
+            </a>
+            
+            <div class="text-xs font-bold text-accent uppercase tracking-wider mb-2 mt-6 ml-4">CRM & Data</div>
+            <a data-target="admin-clients" class="sidebar-link">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                Clients
+            </a>
+            <a data-target="admin-menu" class="sidebar-link">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                Menu / Flavors
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-border">
+            <button class="theme-toggle w-full flex items-center justify-between px-4 py-2 rounded-xl text-text bg-secondary/50 hover:bg-secondary transition-colors mb-2">
+                <span class="text-sm font-medium">Dark Mode</span>
+                <div class="relative inline-flex items-center rounded-full w-10 h-5 bg-border transition-colors">
+                    <span class="absolute left-1 w-3 h-3 bg-text rounded-full transition-transform dark:translate-x-5"></span>
+                </div>
+            </button>
+            <a href="../auth/login.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 h-screen overflow-y-auto bg-secondary/10 flex flex-col relative">
+        
+        <!-- SECTION: Admin Overview -->
+        <div id="admin-overview" class="spa-section active p-6 md:p-8 flex-1">
+            <div class="flex flex-col md:flex-row justify-between md:items-end mb-8 gap-4">
+                <div>
+                    <h1 class="text-3xl font-heading font-bold text-primary">Overview</h1>
+                    <p class="opacity-90">Today is Oct 14, 2026. You have 3 orders due this week.</p>
+                </div>
+                <button class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300" onclick="document.querySelector('[data-target=\'admin-orders\']').click()">
+                    View Board <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+
+            <!-- Stat Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-secondary rounded-lg text-primary">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <span class="text-green-500 text-sm font-bold flex items-center"><svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg> 12%</span>
+                    </div>
+                    <div class="text-3xl font-bold font-heading mb-1">$4,250</div>
+                    <div class="text-sm opacity-90">Revenue (This Week)</div>
+                </div>
+                <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-secondary rounded-lg text-primary">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <span class="text-green-500 text-sm font-bold flex items-center"><svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg> 4</span>
+                    </div>
+                    <div class="text-3xl font-bold font-heading mb-1">15</div>
+                    <div class="text-sm opacity-90">Active Orders</div>
+                </div>
+                <div class="bg-primary text-white p-6 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10">
+                        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <div class="mb-4 relative z-10">
+                        <div class="p-2 bg-white/20 rounded-lg inline-block">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold font-heading mb-1 relative z-10">3</div>
+                    <div class="text-sm opacity-90 relative z-10">New Inquiries</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity List -->
+            <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm flex-1">
+                <h2 class="font-bold text-lg mb-6">Recent Activity</h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">Order #SC-8924 Deposit Paid</p>
+                            <p class="text-xs opacity-90 mt-1">Jane Doe • 2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-accent/20 text-accent flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">New Inquiry: Wedding Cake Quote</p>
+                            <p class="text-xs opacity-90 mt-1">Michael Smith • 5 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-full bg-secondary text-primary flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                        </div>
+                        <div>
+                            <p class="font-medium text-sm">Inventory Alert: Low on Madagascar Vanilla</p>
+                            <p class="text-xs opacity-90 mt-1">System • Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Kanban Order Management -->
+        <div id="admin-orders" class="spa-section p-6 md:p-8 flex-1 h-full flex flex-col">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h1 class="text-3xl font-heading font-bold text-primary">Order Pipeline</h1>
+                </div>
+                <button class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">+ Add Order</button>
+            </div>
+
+            <!-- Kanban Scroll Area -->
+            <div class="flex-1 overflow-x-auto pb-4">
+                <div class="flex gap-6 h-full min-h-[500px]">
+                    
+                    <!-- Column 1: New / Quote -->
+                    <div class="kanban-col">
+                        <div class="flex justify-between items-center mb-4 px-2">
+                            <h3 class="font-bold text-sm text-primary uppercase tracking-wider">Inquiries <span class="bg-bg text-text text-xs px-2 py-0.5 rounded-full ml-1 border border-border">2</span></h3>
+                        </div>
+                        <div class="space-y-3 overflow-y-auto flex-1 px-1">
+                            <!-- Card -->
+                            <div class="bg-bg p-4 rounded-xl border border-border shadow-sm cursor-pointer hover:border-primary transition-colors">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded">Wedding</span>
+                                    <span class="text-xs opacity-50">1 hr ago</span>
+                                </div>
+                                <h4 class="font-bold mb-1">M. Smith - 3 Tier</h4>
+                                <p class="text-xs opacity-90 mb-3">Due: Dec 12, 2026</p>
+                                <div class="flex justify-between items-center mt-2 border-t border-border pt-3">
+                                    <div class="w-6 h-6 rounded-full bg-secondary text-[10px] flex items-center justify-center font-bold text-primary">MS</div>
+                                    <span class="text-xs font-bold text-primary">Needs Quote</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Confirmed -->
+                    <div class="kanban-col">
+                        <div class="flex justify-between items-center mb-4 px-2">
+                            <h3 class="font-bold text-sm text-primary uppercase tracking-wider">Confirmed <span class="bg-bg text-text text-xs px-2 py-0.5 rounded-full ml-1 border border-border">1</span></h3>
+                        </div>
+                        <div class="space-y-3 overflow-y-auto flex-1 px-1">
+                            <!-- Card -->
+                            <div class="bg-bg p-4 rounded-xl border border-border shadow-sm cursor-pointer hover:border-primary transition-colors">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">Birthday</span>
+                                    <span class="text-xs opacity-50">SC-8924</span>
+                                </div>
+                                <h4 class="font-bold mb-1">Jane Doe - Chocolate</h4>
+                                <p class="text-xs opacity-90 mb-3">Due: Oct 24, 2026</p>
+                                <div class="flex justify-between items-center mt-2 border-t border-border pt-3">
+                                    <div class="w-6 h-6 rounded-full bg-secondary text-[10px] flex items-center justify-center font-bold text-primary">JD</div>
+                                    <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">Deposit Paid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Baking -->
+                    <div class="kanban-col">
+                        <div class="flex justify-between items-center mb-4 px-2">
+                            <h3 class="font-bold text-sm text-primary uppercase tracking-wider">In Kitchen <span class="bg-bg text-text text-xs px-2 py-0.5 rounded-full ml-1 border border-border">0</span></h3>
+                        </div>
+                        <div class="space-y-3 overflow-y-auto flex-1 px-1 border-2 border-dashed border-border/50 rounded-xl flex items-center justify-center">
+                            <span class="text-sm opacity-40 font-medium">Drop items here</span>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Ready/Delivery -->
+                    <div class="kanban-col opacity-90">
+                        <div class="flex justify-between items-center mb-4 px-2">
+                            <h3 class="font-bold text-sm text-primary uppercase tracking-wider">Ready <span class="bg-bg text-text text-xs px-2 py-0.5 rounded-full ml-1 border border-border">0</span></h3>
+                        </div>
+                        <div class="space-y-3 overflow-y-auto flex-1 px-1 border-2 border-dashed border-border/50 rounded-xl flex items-center justify-center">
+                            <span class="text-sm opacity-40 font-medium">Drop items here</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: Clients (Placeholder) -->
+        <div id="admin-clients" class="spa-section p-6 md:p-8 flex-1">
+            <h1 class="text-3xl font-heading font-bold text-primary mb-8">Client Directory</h1>
+            <div class="bg-bg border border-border rounded-2xl p-8 text-center text-opacity-90 flex flex-col items-center justify-center min-h-[400px]">
+                <svg class="w-16 h-16 opacity-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <p>Client CRM module is under construction.</p>
+            </div>
+        </div>
+
+        <!-- SECTION: Menu (Placeholder) -->
+        <div id="admin-menu" class="spa-section p-6 md:p-8 flex-1">
+            <h1 class="text-3xl font-heading font-bold text-primary mb-8">Menu Management</h1>
+            <div class="bg-bg border border-border rounded-2xl p-8 text-center text-opacity-90 flex flex-col items-center justify-center min-h-[400px]">
+                <svg class="w-16 h-16 opacity-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                <p>Menu and Content module is under construction.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

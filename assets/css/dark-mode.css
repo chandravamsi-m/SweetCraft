@@ -1,0 +1,46 @@
+/* c:/Users/Admin/Desktop/HTML Templates/phase 2/SweetCraft/assets/css/dark-mode.css */
+
+[data-theme="dark"] {
+  --color-text: #f0e9e0;
+  --color-bg: #1a1612;
+  --color-border: #3a2f27;
+  --color-secondary: #2a221b;
+  --color-alternate: #231d17;
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Scrolled solid navbar override in dark mode for mobile viewports */
+@media (max-width: 1023px) {
+  [data-theme="dark"] #navbar.glass {
+    background-color: #1a1612 !important;
+  }
+}
+
+/* Custom robust Dark Mode overrides to bypass Tailwind CDN compilation issues */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-\[\#fffdf9\] {
+  background-color: #2a221b !important;
+  border-color: transparent !important;
+}
+
+[data-theme="dark"] .bg-\[\#fbf9f5\] {
+  background-color: #1a1612 !important;
+}
+
+/* Hide all section horizontal and vertical borders/lines in dark mode */
+[data-theme="dark"] section.border-b,
+[data-theme="dark"] footer.border-t,
+[data-theme="dark"] .flavor-card,
+[data-theme="dark"] .bg-bg.border,
+[data-theme="dark"] .bg-white.border {
+  border-color: transparent !important;
+}
+
+[data-theme="dark"] .review-card {
+  background-color: #15110d !important;
+}
+

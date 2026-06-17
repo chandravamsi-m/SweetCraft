@@ -1,0 +1,55 @@
+/* c:/Users/Admin/Desktop/HTML Templates/phase 2/SweetCraft/assets/css/rtl.css */
+
+/* RTL/LTR visibility toggle controls based on document direction */
+[dir="ltr"] .ltr-only {
+  display: none !important;
+}
+[dir="ltr"] .rtl-only {
+  display: inline-block !important;
+}
+[dir="rtl"] .rtl-only {
+  display: none !important;
+}
+[dir="rtl"] .ltr-only {
+  display: inline-block !important;
+}
+
+/* Mobile drawer transition animations and side alignments */
+#mobile-menu {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[dir="ltr"] #mobile-menu {
+  right: 0 !important;
+  left: auto !important;
+  border-left: 1px solid var(--color-border);
+  border-right: none;
+  transform: translateX(100%);
+}
+
+[dir="rtl"] #mobile-menu {
+  right: auto !important;
+  left: 0 !important;
+  border-right: 1px solid var(--color-border);
+  border-left: none;
+  transform: translateX(-100%);
+}
+
+#mobile-menu.open {
+  transform: translateX(0) !important;
+}
+
+/* Newsletter Button RTL Alignment */
+[dir="rtl"] .newsletter-btn {
+    right: auto !important;
+    left: 0.375rem !important; /* Tailwind's right-1.5 equivalent */
+}
+
+[dir="rtl"] .newsletter-btn i {
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] form input[type="email"] {
+    padding-left: 3.5rem !important; /* Tailwind's pr-14 equivalent */
+    padding-right: 1.25rem !important; /* Tailwind's pl-5 equivalent */
+}

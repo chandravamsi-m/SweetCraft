@@ -1,0 +1,246 @@
+/* c:/Users/Admin/Desktop/HTML Templates/phase 2/SweetCraft/assets/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #b5834a;       /* Warm caramel — brand primary */
+  --color-secondary: #f5e6d3;     /* Soft cream — brand secondary */
+  --color-accent: #e07b54;        /* Terracotta — CTA accent */
+  --color-text: #2d2d2d;
+  --color-bg: #fbf9f5;
+  --color-border: #ede3d8;
+  --color-alternate: #f7efe2;     /* Premium alternate bg for sections */
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+.bg-alternate {
+  background-color: var(--color-alternate);
+}
+
+
+/* Hide global scrollbar */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+}
+html,
+body {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Base custom classes to replace inline tailwind utilities */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.btn-primary:hover {
+  background-color: #926636;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: transparent !important;
+  border: 1px solid var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary) !important;
+  color: #fbf9f5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(181, 131, 74, 0.15);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  color: var(--color-text);
+  transition: all 0.15s ease-in-out;
+}
+.btn-ghost:hover {
+  background-color: var(--color-secondary);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.solid-badge {
+  background-color: #fbf9f5 !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+[data-theme="dark"] .solid-badge {
+  background-color: #1a1612 !important;
+  border-color: #3a2f27 !important;
+}
+
+
+/* Responsive grid for gallery */
+.masonry-grid {
+    column-count: 1;
+    column-gap: 1.5rem;
+}
+@media (min-width: 640px) {
+    .masonry-grid { column-count: 2; }
+}
+@media (min-width: 1024px) {
+    .masonry-grid { column-count: 3; }
+}
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Navbar constant height scroll override */
+#navbar {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s !important;
+}
+
+/* Solid navbar background on mobile/small screens when scrolled */
+@media (max-width: 1023px) {
+  #navbar.glass {
+    background-color: #fbf9f5 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Newsletter button exact positioning */
+.newsletter-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    right: 0.375rem !important;
+    z-index: 10 !important;
+}
+
+/* Styling for transparent navbar state on dark hero background */
+#navbar.bg-transparent.dark-hero-header {
+  border-color: transparent !important;
+}
+
+/* 1. Menu links & dropdown triggers (excluding active link which is styled by js/active-link or has custom color) */
+#navbar.bg-transparent.dark-hero-header nav a:not(.font-bold),
+#navbar.bg-transparent.dark-hero-header nav span:not(.font-bold) {
+  color: #fffdf9 !important;
+  opacity: 0.9;
+}
+
+#navbar.bg-transparent.dark-hero-header nav a:hover,
+#navbar.bg-transparent.dark-hero-header nav span:hover {
+  color: var(--color-primary) !important;
+  opacity: 1;
+}
+
+/* 2. Dropdown chevron icons */
+#navbar.bg-transparent.dark-hero-header nav svg,
+#navbar.bg-transparent.dark-hero-header nav i {
+  stroke: #fffdf9 !important;
+}
+
+/* 3. Logo text */
+#navbar.bg-transparent.dark-hero-header a.group span.text-2xl {
+  color: #fffdf9 !important;
+}
+#navbar.bg-transparent.dark-hero-header a.group span.text-2xl span.text-accent {
+  color: var(--color-primary) !important;
+}
+
+/* 4. Action buttons - RTL & Theme Toggle */
+#navbar.bg-transparent.dark-hero-header .rtl-toggle,
+#navbar.bg-transparent.dark-hero-header .theme-toggle {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fffdf9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+#navbar.bg-transparent.dark-hero-header .rtl-toggle:hover,
+#navbar.bg-transparent.dark-hero-header .theme-toggle:hover {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-color: var(--color-primary) !important;
+}
+
+/* 5. Secondary Button (Login) */
+#navbar.bg-transparent.dark-hero-header .btn-secondary {
+  border-color: #fffdf9 !important;
+  color: #fffdf9 !important;
+}
+#navbar.bg-transparent.dark-hero-header .btn-secondary:hover {
+  background-color: #fffdf9 !important;
+  color: var(--color-text) !important;
+}
+
+/* 6. Mobile Menu Button */
+#navbar.bg-transparent.dark-hero-header #mobile-menu-btn {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #fffdf9 !important;
+}
+#navbar.bg-transparent.dark-hero-header #mobile-menu-btn:hover {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}
+
+/* Core background color overrides for CDN stability */
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+.bg-secondary {
+  background-color: var(--color-secondary) !important;
+}
+.bg-accent {
+  background-color: var(--color-accent) !important;
+}
+.bg-bg {
+  background-color: var(--color-bg) !important;
+}
+.text-white {
+  color: #fffdf9 !important;
+}
+
+
+
