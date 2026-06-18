@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dashboard — SweetCraft Bakery</title>
     
-    
-    
-    
-
     <!-- Tailwind CSS (CDN) -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dark-mode.css">
@@ -17,346 +13,1132 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
-</head>
-<body class="antialiased min-h-screen bg-bg flex flex-col md:flex-row overflow-x-hidden">
+    <style>
+        /* Sidebar link styles */
+        .sidebar-link {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-text);
+            opacity: 0.8;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .sidebar-link:hover {
+            opacity: 1;
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+        }
+        .sidebar-link.active {
+            opacity: 1;
+            background-color: rgba(181, 131, 74, 0.08) !important;
+            color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+        /* Vertical active accent line on left of active link */
+        .sidebar-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--color-primary);
+            border-radius: 0 4px 4px 0;
+        }
+        [dir="rtl"] .sidebar-link.active::before {
+            left: auto;
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+        [data-theme="dark"] .sidebar-link.active {
+            background-color: rgba(245, 230, 211, 0.08) !important;
+        }
+        
+        /* SPA sections visibility */
+        .spa-section {
+            display: none;
+        }
+        .spa-section.active {
+            display: block;
+        }
 
-    <!-- Mobile Header -->
-    <div class="md:hidden bg-bg border-b border-border p-4 flex justify-between items-center sticky top-0 z-50">
-        <a href="../index.html" class="text-xl font-heading font-bold text-primary">SweetCraft</a>
-        <button id="dashboard-mobile-menu-btn" class="p-2 rounded-lg hover:bg-secondary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-    </div>
+        /* Order Wizard Steps */
+        .wizard-step {
+            display: none;
+        }
+        .wizard-step.active {
+            display: block;
+        }
+        .wizard-step-btn {
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .wizard-step-btn.active {
+            color: var(--color-primary) !important;
+            border-bottom-color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+
+        /* Custom Dark Mode Adjustments for Dashboard Inputs, Tables, and Cards */
+        [data-theme="dark"] input, 
+        [data-theme="dark"] select, 
+        [data-theme="dark"] textarea {
+            background-color: #231d17 !important;
+            border-color: #4a3c31 !important;
+            color: #f0e9e0 !important;
+        }
+        [data-theme="dark"] input:focus, 
+        [data-theme="dark"] select:focus, 
+        [data-theme="dark"] textarea:focus {
+            border-color: var(--color-primary) !important;
+            box-shadow: 0 0 0 2px rgba(181, 131, 74, 0.2) !important;
+        }
+        [data-theme="dark"] .bg-bg {
+            background-color: #231d17 !important;
+        }
+        [data-theme="dark"] .border-border {
+            border-color: #4a3c31 !important;
+        }
+        [data-theme="dark"] .bg-secondary\/20, 
+        [data-theme="dark"] .bg-secondary\/15 {
+            background-color: rgba(61, 46, 27, 0.4) !important;
+        }
+        [data-theme="dark"] table th {
+            background-color: #2a221b !important;
+            color: #f0e9e0 !important;
+            border-bottom-color: #4a3c31 !important;
+        }
+        [data-theme="dark"] table, 
+        [data-theme="dark"] tr, 
+        [data-theme="dark"] td, 
+        [data-theme="dark"] th {
+            border-color: #3a2f27 !important;
+        }
+        [data-theme="dark"] .divide-border > :not([hidden]) ~ :not([hidden]) {
+            border-color: #3a2f27 !important;
+        }
+        [data-theme="dark"] .bg-white {
+            background-color: #231d17 !important;
+        }
+        /* Fix switch background colors under dark mode */
+        [data-theme="dark"] .peer-checked\:bg-primary:checked + div {
+            background-color: var(--color-primary) !important;
+        }
+        [data-theme="dark"] .bg-secondary\/30 {
+            background-color: rgba(61, 46, 27, 0.6) !important;
+        }
+        /* Deposit alert styling override */
+        .deposit-alert {
+            background-color: rgba(181, 131, 74, 0.06) !important;
+            border: 1px solid rgba(181, 131, 74, 0.15) !important;
+            border-left: 4px solid var(--color-primary) !important;
+        }
+        [dir="rtl"] .deposit-alert {
+            border-left: 1px solid rgba(181, 131, 74, 0.15) !important;
+            border-right: 4px solid var(--color-primary) !important;
+        }
+        .deposit-alert h3 {
+            color: var(--color-primary) !important;
+        }
+        .deposit-alert p {
+            color: var(--color-text) !important;
+            opacity: 0.85;
+        }
+        [data-theme="dark"] .deposit-alert {
+            background-color: rgba(181, 131, 74, 0.08) !important;
+            border: 1px solid rgba(181, 131, 74, 0.2) !important;
+            border-left: 4px solid var(--color-primary) !important;
+        }
+        [data-theme="dark"][dir="rtl"] .deposit-alert {
+            border-left: 1px solid rgba(181, 131, 74, 0.2) !important;
+            border-right: 4px solid var(--color-primary) !important;
+        }
+
+        /* Need a Cake Card Override */
+        .need-cake-card {
+            background-color: var(--color-bg) !important;
+            border: 1px solid var(--color-border) !important;
+            color: var(--color-text) !important;
+        }
+        .need-cake-card h2 {
+            color: var(--color-primary) !important;
+        }
+        .need-cake-card p {
+            color: var(--color-text) !important;
+            opacity: 0.8;
+        }
+        .need-cake-card .icon-wrapper {
+            background-color: rgba(181, 131, 74, 0.08) !important;
+            border: 1px solid rgba(181, 131, 74, 0.15) !important;
+            color: var(--color-primary) !important;
+        }
+        .need-cake-card .btn-cta {
+            background-color: var(--color-primary) !important;
+            color: #ffffff !important;
+        }
+        .need-cake-card .btn-cta:hover {
+            background-color: #a0723e !important;
+        }
+        .need-cake-card .blur-glow {
+            background-color: rgba(181, 131, 74, 0.06) !important;
+        }
+        
+        [data-theme="dark"] .need-cake-card {
+            background-color: #231d17 !important;
+            border-color: #4a3c31 !important;
+        }
+        [data-theme="dark"] .need-cake-card .blur-glow {
+            background-color: rgba(245, 230, 211, 0.05) !important;
+        }
+
+        /* Configurator custom controls styling */
+        .occasion-card-option input:checked + div + span,
+        .occasion-card-option input:checked ~ div {
+            color: var(--color-primary) !important;
+        }
+        .occasion-card-option input:checked ~ span {
+            color: var(--color-primary) !important;
+        }
+        .occasion-card-option:has(input:checked) {
+            border-color: var(--color-primary) !important;
+            background-color: rgba(181, 131, 74, 0.08) !important;
+            box-shadow: 0 4px 12px rgba(181, 131, 74, 0.05);
+        }
+        .flavor-tile-option:has(input:checked) {
+            border-color: var(--color-primary) !important;
+            background-color: rgba(181, 131, 74, 0.08) !important;
+        }
+        
+        [data-theme="dark"] .occasion-card-option:has(input:checked),
+        [data-theme="dark"] .flavor-tile-option:has(input:checked) {
+            background-color: rgba(181, 131, 74, 0.12) !important;
+        }
+        .cake-preview-tier {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Order Tracking Timeline Overrides */
+        .track-line {
+            background-color: #ebdcd0 !important;
+        }
+        [data-theme="dark"] .track-line {
+            background-color: #4a3c31 !important;
+        }
+        .track-circle-completed {
+            border-color: #fffdf9 !important;
+            background-color: var(--color-primary) !important;
+        }
+        [data-theme="dark"] .track-circle-completed {
+            border-color: #231d17 !important;
+        }
+        .track-circle-active {
+            background-color: #fef3c7 !important;
+            border-color: rgba(181, 131, 74, 0.4) !important;
+            color: var(--color-primary) !important;
+        }
+        [data-theme="dark"] .track-circle-active {
+            background-color: #3d2e1b !important;
+            border-color: rgba(181, 131, 74, 0.4) !important;
+        }
+        .track-circle-pending {
+            background-color: rgba(181, 131, 74, 0.05) !important;
+            border-color: #fffdf9 !important;
+            color: var(--color-text) !important;
+            opacity: 0.45;
+        }
+        [data-theme="dark"] .track-circle-pending {
+            background-color: rgba(245, 230, 211, 0.04) !important;
+            border-color: #231d17 !important;
+            color: #f0e9e0 !important;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen bg-bg flex flex-col md:flex-row overflow-x-hidden no-scrollbar">
 
     <!-- Sidebar -->
-    <aside id="dashboard-sidebar" class="w-full md:w-64 lg:w-72 bg-bg border-r border-border flex flex-col h-screen sticky top-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 absolute md:relative z-40">
-        <div class="p-6 hidden md:block">
-            <a href="../index.html" class="text-2xl font-heading font-bold text-primary">SweetCraft</a>
-        </div>
-        
-        <div class="px-4 py-6 border-b border-border">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">JD</div>
-                <div>
-                    <h3 class="font-bold text-sm">Jane Doe</h3>
-                    <p class="text-xs opacity-90">jane@example.com</p>
-                </div>
+    <aside id="dashboard-sidebar" class="w-full md:w-56 lg:w-60 bg-bg border-r border-border flex flex-col h-screen sticky top-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 absolute md:relative z-40 shrink-0">
+        <!-- Sidebar Brand/Header -->
+        <a href="../index.html" class="p-6 border-b border-border flex items-center gap-1.5 cursor-pointer hover:opacity-90 transition-opacity group">
+            <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 shrink-0 group-hover:bg-secondary transition-all duration-300">
+                <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300">
             </div>
-        </div>
-
-        <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+            <span class="text-2xl font-heading font-bold tracking-tight text-primary transition-colors duration-300 group-hover:text-accent">
+                Sweet<span class="text-accent font-medium italic transition-colors duration-300 group-hover:text-primary">Craft</span>
+            </span>
+        </a>
+        
+        <!-- Navigation Link Group -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1.5 no-scrollbar">
             <a data-target="section-overview" class="sidebar-link active">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                Overview
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                <span>Overview</span>
             </a>
-            <a data-target="section-new-order" class="sidebar-link">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                New Order
+            <a data-target="section-tracking" class="sidebar-link">
+                <i data-lucide="truck" class="w-5 h-5"></i>
+                <span>Track Order</span>
             </a>
             <a data-target="section-history" class="sidebar-link">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Order History
+                <i data-lucide="history" class="w-5 h-5"></i>
+                <span>Order History</span>
             </a>
             <a data-target="section-saved" class="sidebar-link">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                Saved Designs
+                <i data-lucide="heart" class="w-5 h-5"></i>
+                <span>Saved Designs</span>
             </a>
             <a data-target="section-settings" class="sidebar-link">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                Settings
+                <i data-lucide="settings" class="w-5 h-5"></i>
+                <span>Settings</span>
+            </a>
+            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                <span>Sign Out</span>
             </a>
         </nav>
-
-        <div class="p-4 border-t border-border">
-            <button class="theme-toggle w-full flex items-center justify-between px-4 py-2 rounded-xl text-text bg-secondary/50 hover:bg-secondary transition-colors mb-2">
-                <span class="text-sm font-medium">Dark Mode</span>
-                <div class="relative inline-flex items-center rounded-full w-10 h-5 bg-border transition-colors">
-                    <span class="absolute left-1 w-3 h-3 bg-text rounded-full transition-transform dark:translate-x-5"></span>
-                </div>
-            </button>
-            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                Sign Out
-            </a>
-        </div>
     </aside>
 
-    <!-- Main Content -->
-    <main class="flex-1 h-screen overflow-y-auto bg-secondary/10">
-        
-        <!-- SECTION: Overview -->
-        <div id="section-overview" class="spa-section active p-6 md:p-10 max-w-6xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Welcome back, Jane!</h1>
-            <p class="opacity-90 mb-8">Here's what's happening with your SweetCraft orders.</p>
-
-            <!-- Active Order Tracking -->
-            <div class="bg-bg border border-border rounded-2xl p-6 md:p-8 mb-8 shadow-sm">
-                <div class="flex flex-col md:flex-row justify-between md:items-center mb-8 gap-4">
-                    <div>
-                        <h2 class="text-xl font-bold">Active Order: Custom Birthday Cake</h2>
-                        <p class="text-sm opacity-90">Order #SC-8924 • Delivery on Oct 24, 2026</p>
-                    </div>
-                    <span class="px-4 py-2 bg-accent/20 text-accent font-bold text-sm rounded-full inline-block self-start">In Kitchen</span>
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="relative pt-4 pb-8">
-                    <div class="absolute left-0 top-[26px] w-full h-1 bg-secondary rounded-full"></div>
-                    <div class="absolute left-0 top-[26px] w-1/2 h-1 bg-primary rounded-full"></div>
-                    
-                    <div class="relative flex justify-between">
-                        <div class="flex flex-col items-center">
-                            <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mb-2 z-10 border-4 border-bg"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                            <span class="text-xs font-bold text-primary">Confirmed</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mb-2 z-10 border-4 border-bg"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                            <span class="text-xs font-bold text-primary">Design Appv'd</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center mb-2 z-10 border-4 border-bg">
-                                <span class="w-2 h-2 rounded-full bg-white"></span>
-                            </div>
-                            <span class="text-xs font-bold text-primary">Baking</span>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="w-6 h-6 rounded-full bg-secondary mb-2 z-10 border-4 border-bg"></div>
-                            <span class="text-xs font-medium opacity-50">Delivery</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Main Content Area -->
+    <main class="flex-1 h-screen overflow-y-auto bg-[#fbf9f5] dark:bg-[#1a1612] flex flex-col no-scrollbar">
+        <!-- Top bar Header -->
+        <header class="bg-bg border-b border-border py-6 px-6 md:px-8 flex justify-between items-center sticky top-0 z-30 shrink-0">
+            <div class="flex items-center gap-3">
+                <!-- Mobile menu toggle button (hamburger) -->
+                <button id="dashboard-mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-secondary text-text">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+                <h2 id="section-title-header" class="text-lg font-bold text-primary font-heading">Overview</h2>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm">
-                    <h2 class="font-bold mb-4 flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> Upcoming Events</h2>
-                    <ul class="space-y-4">
-                        <li class="flex justify-between items-center border-b border-border pb-4">
-                            <div>
-                                <p class="font-medium">Mom's 60th</p>
-                                <p class="text-xs opacity-90">Nov 15, 2026</p>
-                            </div>
-                            <button class="text-xs text-primary font-medium hover:underline" onclick="window.location.href='order-now.html'">Order Now</button>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="bg-primary text-white rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center text-center">
-                    <h2 class="font-bold font-heading text-2xl mb-2">Need a Cake?</h2>
-                    <p class="opacity-90 mb-6 text-sm">Start our visual builder to design your perfect cake.</p>
-                    <button class="inline-flex items-center justify-center px-5 py-2 rounded-full border border-white text-white font-medium text-sm hover:bg-white hover:text-primary transition-all duration-300 w-full" onclick="window.location.href='order-now.html'">Start New Order</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION: New Order (Wizard) -->
-        <div id="section-new-order" class="spa-section p-6 md:p-10 max-w-4xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Build Your Order</h1>
-            <p class="opacity-90 mb-8">Follow the steps to submit your custom request.</p>
             
-            <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm">
-                <!-- Wizard Nav -->
-                <div class="flex border-b border-border bg-secondary/20">
-                    <button class="wizard-step-btn active" data-step="1">1. Occasion</button>
-                    <button class="wizard-step-btn" data-step="2">2. Flavor</button>
-                    <button class="wizard-step-btn" data-step="3">3. Design</button>
-                    <button class="wizard-step-btn" data-step="4">4. Review</button>
+            <div class="flex items-center gap-4">
+                <!-- RTL toggle -->
+                <button class="rtl-toggle h-9 px-4 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm flex items-center justify-center" aria-label="Toggle Layout Direction">
+                    <span class="rtl-only">RTL</span>
+                    <span class="ltr-only">LTR</span>
+                </button>
+                <!-- Dark Mode Toggle -->
+                <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <!-- Notification Bell -->
+                <button class="relative w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 flex items-center justify-center shadow-sm">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-accent rounded-full"></span>
+                </button>
+                <!-- User Profile Avatar -->
+                <div class="flex items-center gap-2.5 pl-2 border-l border-border">
+                    <img src="../assets/images/team_maria_1781672439014.png" alt="Jane Doe" class="w-9 h-9 rounded-full object-cover border border-primary/20">
                 </div>
-                
-                <div class="p-6 md:p-10">
-                    <form id="order-wizard">
-                        <!-- Step 1: Occasion -->
-                        <div id="wizard-step-1" class="wizard-step active space-y-6">
-                            <h2 class="text-xl font-bold">Event Details</h2>
+            </div>
+        </header>
+        
+        <!-- Main Scrollable SPA Content Wrapper -->
+        <div class="flex-1 p-6 md:p-8 lg:p-10 max-w-6xl w-full mx-auto space-y-8 no-scrollbar">
+            
+            <!-- SECTION: Overview -->
+            <div id="section-overview" class="spa-section active space-y-8">
+
+
+                <!-- Active Order Tracking Banner (Amber Theme Alert) -->
+                <div class="deposit-alert rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                            <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base">Deposit Payment Required</h3>
+                            <p class="text-sm font-medium mt-0.5">Your custom cake deposit of $120.00 is due in 3 days (June 20, 2026).</p>
+                        </div>
+                    </div>
+                    <button class="bg-primary hover:bg-[#a0723e] text-white py-3 px-6 rounded-xl text-sm font-bold shadow-sm transition-all duration-300 w-full md:w-auto text-center whitespace-nowrap" onclick="switchToNewOrderTab()">Pay Deposit Now</button>
+                </div>
+
+                <!-- Stats Grid (NestFlow Style) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="calendar" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[11px] font-bold text-text/50 uppercase tracking-wider">Order Due Date</span>
+                            <span class="text-lg font-bold text-text mt-0.5">Jun 20, 2026</span>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#0ea5e9]/10 text-[#0ea5e9] dark:bg-[#0ea5e9]/20 dark:text-[#38bdf8] flex items-center justify-center shrink-0">
+                            <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[11px] font-bold text-text/50 uppercase tracking-wider">Next Payment</span>
+                            <span class="text-lg font-bold text-text mt-0.5">$120.00</span>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="wrench" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[11px] font-bold text-text/50 uppercase tracking-wider">Active Orders</span>
+                            <span class="text-lg font-bold text-text mt-0.5">1 Active</span>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-bg border border-border p-6 rounded-2xl shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[11px] font-bold text-text/50 uppercase tracking-wider">Saved Designs</span>
+                            <span class="text-lg font-bold text-text mt-0.5">4 Designs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Table Ledger (NestFlow Table Style) -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-primary font-heading">Recent Orders</h2>
+                        <a href="#history" onclick="switchToTab('history')" class="text-sm font-bold text-[#b5834a] hover:underline">View Ledger</a>
+                    </div>
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-border text-xs font-bold text-text/60 uppercase bg-secondary/10 dark:bg-secondary/5">
+                                        <th class="p-4 pl-6">Month / Order</th>
+                                        <th class="p-4">Amount</th>
+                                        <th class="p-4">Status</th>
+                                        <th class="p-4 pr-6 text-right">Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm divide-y divide-border">
+                                    <tr class="hover:bg-secondary/5 transition-colors">
+                                        <td class="p-4 pl-6 font-medium text-text">May 2026 (SC-8924)</td>
+                                        <td class="p-4 font-bold text-text">$120.00</td>
+                                        <td class="p-4">
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400">Paid</span>
+                                        </td>
+                                        <td class="p-4 pr-6 text-right text-text/60">
+                                            <button class="p-1.5 hover:bg-secondary/20 rounded-lg transition-colors" aria-label="Download Receipt" onclick="alert('Downloading Receipt...')">
+                                                <i data-lucide="download" class="w-4 h-4"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-secondary/5 transition-colors">
+                                        <td class="p-4 pl-6 font-medium text-text">April 2026 (SC-7512)</td>
+                                        <td class="p-4 font-bold text-text">$85.00</td>
+                                        <td class="p-4">
+                                            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400">Paid</span>
+                                        </td>
+                                        <td class="p-4 pr-6 text-right text-text/60">
+                                            <button class="p-1.5 hover:bg-secondary/20 rounded-lg transition-colors" aria-label="Download Receipt" onclick="alert('Downloading Receipt...')">
+                                                <i data-lucide="download" class="w-4 h-4"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Upcoming events -->
+                    <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-4">
+                        <h2 class="font-bold flex items-center gap-2 text-primary font-heading"><i data-lucide="calendar" class="w-5 h-5"></i> Upcoming Events</h2>
+                        <ul class="space-y-4">
+                            <li class="flex justify-between items-center border-b border-border pb-4">
+                                <div>
+                                    <p class="font-medium text-sm text-text">Mom's 60th Birthday</p>
+                                    <p class="text-xs text-text opacity-60">November 15, 2026</p>
+                                </div>
+                                <button class="text-xs text-[#b5834a] font-bold hover:underline flex items-center gap-1" onclick="switchToNewOrderTab()">Order Now <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-border pb-4">
+                                <div>
+                                    <p class="font-medium text-sm text-text">Sister's Baby Shower</p>
+                                    <p class="text-xs text-text opacity-60">December 05, 2026</p>
+                                </div>
+                                <button class="text-xs text-[#b5834a] font-bold hover:underline flex items-center gap-1" onclick="switchToNewOrderTab()">Order Now <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <div>
+                                    <p class="font-medium text-sm text-text">Office Holiday Party</p>
+                                    <p class="text-xs text-text opacity-60">December 18, 2026</p>
+                                </div>
+                                <button class="text-xs text-[#b5834a] font-bold hover:underline flex items-center gap-1" onclick="switchToNewOrderTab()">Order Now <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Need a Cake Callout -->
+                    <div class="need-cake-card rounded-2xl p-8 shadow-sm flex flex-col justify-between items-center text-center relative overflow-hidden min-h-[260px]">
+                        <!-- Subtle decorative background graphics -->
+                        <div class="absolute -top-12 -right-12 w-32 h-32 blur-glow rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-8 -left-8 w-24 h-24 blur-glow rounded-full blur-lg"></div>
+                        
+                        <div class="space-y-3 relative z-10 my-auto">
+                            <div class="w-12 h-12 rounded-full icon-wrapper flex items-center justify-center mx-auto mb-1">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <h2 class="font-bold font-heading text-2xl tracking-tight">Need a Cake?</h2>
+                            <p class="text-xs font-light leading-relaxed max-w-[200px] mx-auto">Start our interactive visual builder to design your perfect cake.</p>
+                        </div>
+                        <button class="relative z-10 inline-flex items-center justify-center px-5 py-3 rounded-xl btn-cta font-bold text-xs active:scale-95 transition-all duration-300 w-full uppercase tracking-wider shadow-sm" onclick="switchToNewOrderTab()">Start New Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Order Tracking -->
+            <div id="section-tracking" class="spa-section space-y-8">
+                <!-- Header/Info Card -->
+                <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-xs font-bold bg-primary/10 text-primary px-3 py-1 rounded-full uppercase tracking-wider">Active Custom Order</span>
+                            <span class="text-xs font-mono text-text/60">ID: SC-8924</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-text font-heading mt-2">Double Chocolate Drip Cake</h2>
+                        <p class="text-xs text-text/60 mt-1">Estimated Delivery: <strong class="text-text font-bold">June 20, 2026 at 4:00 PM</strong></p>
+                    </div>
+                    <div class="flex gap-2 w-full md:w-auto">
+                        <button class="flex-1 md:flex-initial border border-border hover:border-primary hover:text-primary text-text/80 px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5" onclick="alert('Opening support chat with our lead baker...')">
+                            <i data-lucide="message-square" class="w-4 h-4"></i> Chat with Baker
+                        </button>
+                        <button class="flex-1 md:flex-initial bg-primary hover:bg-[#a0723e] text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all text-center whitespace-nowrap" onclick="alert('Viewing invoice details...')">View Invoice</button>
+                    </div>
+                </div>
+
+                <!-- Live Progress Tracking Steps -->
+                <div class="bg-bg border border-border rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-xs font-bold text-primary uppercase tracking-wider mb-8">Preparation Progress</h3>
+                    
+                    <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-8 w-full">
+                        <!-- Horizontal connector line for desktop -->
+                        <div class="hidden md:block absolute left-6 right-6 top-6 h-0.5 track-line -z-0">
+                            <!-- Progress highlight line -->
+                            <div class="h-full bg-primary" style="width: 66%"></div>
+                        </div>
+                        
+                        <!-- Step 1 -->
+                        <div class="flex md:flex-col items-center gap-4 md:text-center relative z-10 w-full md:w-auto">
+                            <div class="w-12 h-12 rounded-full track-circle-completed text-white flex items-center justify-center border-4 shadow-sm">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-text">Order Confirmed</h4>
+                                <p class="text-xs text-text/50 mt-0.5">June 15, 10:30 AM</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="flex md:flex-col items-center gap-4 md:text-center relative z-10 w-full md:w-auto">
+                            <div class="w-12 h-12 rounded-full track-circle-completed text-white flex items-center justify-center border-4 shadow-sm">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-text">Baking sponge</h4>
+                                <p class="text-xs text-text/50 mt-0.5">June 17, 2:15 PM</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="flex md:flex-col items-center gap-4 md:text-center relative z-10 w-full md:w-auto">
+                            <div class="w-12 h-12 rounded-full track-circle-active flex items-center justify-center border-4 shadow-sm">
+                                <i data-lucide="palette" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-primary">Custom Decorating</h4>
+                                <p class="text-xs text-text/75 mt-0.5">In Progress (Frosting & details)</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4 -->
+                        <div class="flex md:flex-col items-center gap-4 md:text-center relative z-10 w-full md:w-auto">
+                            <div class="w-12 h-12 rounded-full track-circle-pending flex items-center justify-center border-4 shadow-sm">
+                                <i data-lucide="truck" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-text/40">Ready / Out for Delivery</h4>
+                                <p class="text-xs text-text/30 mt-0.5">Pending decoration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Design Summary details -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Specifications -->
+                    <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-4">
+                        <h3 class="font-bold text-base text-primary font-heading flex items-center gap-2"><i data-lucide="info" class="w-5 h-5"></i> Specifications Summary</h3>
+                        <div class="divide-y divide-border text-sm space-y-3">
+                            <div class="flex justify-between pt-3"><span class="opacity-70 text-text">Sponge Flavor</span><span class="font-bold text-text">Dark Chocolate</span></div>
+                            <div class="flex justify-between pt-3"><span class="opacity-70 text-text">Filling / Frosting</span><span class="font-bold text-text">Chocolate Ganache / Smooth Fondant</span></div>
+                            <div class="flex justify-between pt-3"><span class="opacity-70 text-text">Tiers / Size</span><span class="font-bold text-text">2 Tiers (Serves 25-30)</span></div>
+                            <div class="flex justify-between pt-3"><span class="opacity-70 text-text">Dietary Profile</span><span class="font-bold text-text">Nut-Free Option</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delivery/Pickup Details -->
+                    <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-5 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-base text-primary font-heading flex items-center gap-2 mb-4"><i data-lucide="map-pin" class="w-5 h-5"></i> Delivery & Contact</h3>
+                            <div class="grid grid-cols-2 gap-4 text-xs">
+                                <div class="space-y-1">
+                                    <span class="opacity-50 block uppercase font-bold tracking-wider text-[10px]">Recipient</span>
+                                    <strong class="text-text">Jane Doe</strong>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="opacity-50 block uppercase font-bold tracking-wider text-[10px]">Method</span>
+                                    <strong class="text-text">Home Delivery</strong>
+                                </div>
+                                <div class="space-y-1 col-span-2">
+                                    <span class="opacity-50 block uppercase font-bold tracking-wider text-[10px]">Shipping Address</span>
+                                    <strong class="text-text">123 Sweetwood Drive, Sugarland, TX 77479</strong>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="opacity-50 block uppercase font-bold tracking-wider text-[10px]">Contact Phone</span>
+                                    <strong class="text-text">+1 (555) 019-2834</strong>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="opacity-50 block uppercase font-bold tracking-wider text-[10px]">Email</span>
+                                    <strong class="text-text">jane.doe@example.com</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-border pt-4 mt-2">
+                            <div class="flex items-center gap-3 bg-secondary/15 dark:bg-secondary/5 p-3 rounded-xl border border-primary/10">
+                                <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <i data-lucide="info" class="w-4.5 h-4.5"></i>
+                                </div>
+                                <div class="text-[11px]">
+                                    <span class="opacity-60 block">Delivery Note:</span>
+                                    <p class="font-semibold text-text">"Please call upon arrival. Ring bell twice."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Order History -->
+            <div id="section-history" class="spa-section space-y-8">
+
+
+                <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-secondary/25 dark:bg-secondary/5 text-xs font-bold uppercase border-b border-border text-text/60">
+                                    <th class="p-4 pl-6">Order ID</th>
+                                    <th class="p-4">Date</th>
+                                    <th class="p-4">Occasion</th>
+                                    <th class="p-4">Flavor Sponge</th>
+                                    <th class="p-4">Delivery</th>
+                                    <th class="p-4">Total</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4 pr-6 text-right">Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-border">
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-8924</td>
+                                    <td class="p-4">Oct 24, 2026</td>
+                                    <td class="p-4">Birthday</td>
+                                    <td class="p-4">Dark Chocolate</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Store Pickup</span></td>
+                                    <td class="p-4 font-bold text-text">$120.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-accent/15 text-accent rounded-full text-xs font-bold">Active</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-8924...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-7512</td>
+                                    <td class="p-4">May 12, 2026</td>
+                                    <td class="p-4">Mother's Day</td>
+                                    <td class="p-4">Lemon Raspberry</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Delivery</span></td>
+                                    <td class="p-4 font-bold text-text">$85.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full text-xs font-bold">Completed</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-7512...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-6104</td>
+                                    <td class="p-4">Dec 10, 2025</td>
+                                    <td class="p-4">Holiday Party</td>
+                                    <td class="p-4">Red Velvet</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Delivery</span></td>
+                                    <td class="p-4 font-bold text-text">$250.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full text-xs font-bold">Completed</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-6104...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-5309</td>
+                                    <td class="p-4">Oct 05, 2025</td>
+                                    <td class="p-4">Anniversary</td>
+                                    <td class="p-4">Madagascar Vanilla</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Store Pickup</span></td>
+                                    <td class="p-4 font-bold text-text">$195.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full text-xs font-bold">Completed</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-5309...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-4190</td>
+                                    <td class="p-4">Jun 18, 2025</td>
+                                    <td class="p-4">Wedding</td>
+                                    <td class="p-4">Chocolate Truffle</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Delivery</span></td>
+                                    <td class="p-4 font-bold text-text">$480.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full text-xs font-bold">Completed</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-4190...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-secondary/10 transition-colors">
+                                    <td class="p-4 pl-6 font-bold text-primary">SC-3210</td>
+                                    <td class="p-4">Feb 14, 2025</td>
+                                    <td class="p-4">Valentine's Day</td>
+                                    <td class="p-4">Strawberry Mousse</td>
+                                    <td class="p-4"><span class="px-2 py-1 bg-secondary/35 text-text rounded-lg text-xs font-medium">Store Pickup</span></td>
+                                    <td class="p-4 font-bold text-text">$90.00</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 rounded-full text-xs font-bold">Completed</span></td>
+                                    <td class="p-4 pr-6 text-right">
+                                        <button class="p-1.5 hover:bg-secondary/20 rounded-lg text-text/60 transition-colors" onclick="alert('Downloading Invoice SC-3210...')"><i data-lucide="download" class="w-4 h-4"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Saved Designs -->
+            <div id="section-saved" class="spa-section space-y-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Saved item 1 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/wedding_cake_premium.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Wedding</span>
+                            <h3 class="font-bold text-text text-base mt-1">Rustic Floral Tier</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Oct 1, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <!-- Saved item 2 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/flavor_red_velvet_1781672509940.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Birthday</span>
+                            <h3 class="font-bold text-text text-base mt-1">Velvet Swirl Delicacy</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Sep 24, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <!-- Saved item 3 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/chocolate_drip_cake.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Custom Cakes</span>
+                            <h3 class="font-bold text-text text-base mt-1">Double Chocolate Drip</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Sep 12, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <!-- Saved item 4 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/occasion_birthday_1781672542877.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Birthday</span>
+                            <h3 class="font-bold text-text text-base mt-1">Gold Flake Celebration</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Aug 30, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <!-- Saved item 5 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/flavor_lemon_rasp_1781672495740.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Custom Cakes</span>
+                            <h3 class="font-bold text-text text-base mt-1">Lemon Citrus Bliss</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Aug 15, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                    <!-- Saved item 6 -->
+                    <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative hover:shadow-md transition-shadow">
+                        <img src="../assets/images/vanilla_cupcakes.png" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-4">
+                            <span class="text-[10px] font-bold text-[#b5834a] uppercase tracking-wider">Signature</span>
+                            <h3 class="font-bold text-text text-base mt-1">Macaron Fantasy Tower</h3>
+                            <p class="text-xs opacity-60 mt-1">Saved on Jul 28, 2026</p>
+                            <button class="mt-4 w-full bg-secondary/20 hover:bg-secondary text-primary font-bold py-2 rounded-xl text-xs transition-colors" onclick="switchToNewOrderTab()">Order This Design</button>
+                        </div>
+                        <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27] transition-all" onclick="alert('Design removed from saved list')">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: Settings -->
+            <div id="section-settings" class="spa-section space-y-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <!-- Left Column: Profile Card & Navigation Tabs -->
+                    <div class="space-y-6">
+                        <!-- Profile Card with Loyalty points -->
+                        <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm flex flex-col items-center text-center space-y-5">
+                            <div class="relative w-28 h-28 rounded-full overflow-hidden border-2 border-primary/30 shadow-md">
+                                <img src="../assets/images/team_maria_1781672439014.png" alt="Profile Picture" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-text">Jane Doe</h3>
+                                <p class="text-xs text-primary font-bold uppercase tracking-wider mt-0.5">Gold Tier Member</p>
+                            </div>
+                            
+                            <!-- Loyalty Points Bar -->
+                            <div class="w-full bg-secondary/20 rounded-full h-2 relative overflow-hidden">
+                                <div class="bg-primary h-full rounded-full" style="width: 82%"></div>
+                            </div>
+                            <div class="flex justify-between w-full text-[10px] font-bold text-text/60 uppercase">
+                                <span>8,200 Points</span>
+                                <span>10k for Platinum</span>
+                            </div>
+
+                            <div class="flex gap-2 w-full pt-2">
+                                <button class="flex-1 bg-primary hover:bg-[#a0723e] text-white py-2.5 rounded-xl text-xs font-bold transition-all" onclick="alert('Upload image clicked')">Upload New</button>
+                                <button class="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-500 py-2.5 rounded-xl text-xs font-bold transition-all" onclick="alert('Avatar removed')">Remove</button>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Settings Tabs Navigation -->
+                        <div class="bg-bg border border-border rounded-2xl p-2 shadow-sm flex flex-col gap-1">
+                            <button onclick="switchSettingsTab('settings-personal')" class="settings-tab-btn active flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-left transition-all text-text opacity-70 hover:opacity-100 hover:bg-secondary/20">
+                                <i data-lucide="user" class="w-4 h-4 text-primary"></i>
+                                <span>Personal Details</span>
+                            </button>
+                            <button onclick="switchSettingsTab('settings-security')" class="settings-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-left transition-all text-text opacity-70 hover:opacity-100 hover:bg-secondary/20">
+                                <i data-lucide="lock" class="w-4 h-4 text-primary"></i>
+                                <span>Security & Password</span>
+                            </button>
+                            <button onclick="switchSettingsTab('settings-notifications')" class="settings-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-left transition-all text-text opacity-70 hover:opacity-100 hover:bg-secondary/20">
+                                <i data-lucide="bell" class="w-4 h-4 text-primary"></i>
+                                <span>Notifications</span>
+                            </button>
+                            <button onclick="switchSettingsTab('settings-billing')" class="settings-tab-btn flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-left transition-all text-text opacity-70 hover:opacity-100 hover:bg-secondary/20">
+                                <i data-lucide="credit-card" class="w-4 h-4 text-primary"></i>
+                                <span>Payment Methods</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Settings Content Panels -->
+                    <div class="lg:col-span-2">
+                        <!-- Panel 1: Personal Details -->
+                        <div id="settings-personal" class="settings-panel bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-6">
+                            <h2 class="font-bold text-lg text-primary font-heading border-b border-border pb-3 flex items-center gap-2"><i data-lucide="user" class="w-5 h-5"></i> Personal Details</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Occasion Type</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                                        <option>Birthday</option>
-                                        <option>Wedding</option>
-                                        <option>Anniversary</option>
-                                        <option>Corporate</option>
-                                        <option>Other</option>
-                                    </select>
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Full Name</label>
+                                    <input type="text" value="Jane Doe" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Event Date</label>
-                                    <input type="date" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Email Address</label>
+                                    <input type="email" value="jane@example.com" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Guest Count</label>
-                                    <input type="number" min="1" placeholder="e.g. 25" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Phone Number</label>
+                                    <input type="text" value="(555) 123-4567" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Delivery Method</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                                        <option>Store Pickup</option>
-                                        <option>Delivery</option>
-                                    </select>
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Delivery Address</label>
+                                    <input type="text" value="123 Sweet Lane, Pastry City" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                             </div>
-                            <div class="flex justify-end pt-6">
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Next Step &rarr;</button>
+                            <div class="flex justify-end pt-4 border-t border-border">
+                                <button class="bg-primary hover:bg-[#a0723e] text-white py-3 px-8 rounded-xl text-sm font-bold shadow-sm transition-all duration-300" onclick="alert('Personal details saved!')">Save Details</button>
                             </div>
                         </div>
 
-                        <!-- Step 2: Flavor (Simplified) -->
-                        <div id="wizard-step-2" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold">Flavor Profile</h2>
-                            <div class="grid grid-cols-1 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Sponge Flavor</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                                        <option>Madagascar Vanilla</option>
-                                        <option>Dark Chocolate</option>
-                                        <option>Red Velvet</option>
-                                        <option>Lemon</option>
-                                    </select>
+                        <!-- Panel 2: Security & Password -->
+                        <div id="settings-security" class="settings-panel hidden bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-6">
+                            <h2 class="font-bold text-lg text-primary font-heading border-b border-border pb-3 flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> Security & Password</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="md:col-span-2">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Current Password</label>
+                                    <input type="password" placeholder="••••••••" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Filling</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                                        <option>Vanilla Buttercream</option>
-                                        <option>Chocolate Ganache</option>
-                                        <option>Raspberry Compote</option>
-                                        <option>Cream Cheese</option>
-                                    </select>
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">New Password</label>
+                                    <input type="password" placeholder="••••••••" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Dietary Restrictions</label>
-                                    <input type="text" placeholder="e.g. Gluten-Free, Nut Allergy" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Confirm New Password</label>
+                                    <input type="password" placeholder="••••••••" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                             </div>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Next Step &rarr;</button>
+                            <div class="flex justify-end pt-4 border-t border-border">
+                                <button class="bg-primary hover:bg-[#a0723e] text-white py-3 px-8 rounded-xl text-sm font-bold shadow-sm transition-all duration-300" onclick="alert('Password successfully updated!')">Update Password</button>
                             </div>
                         </div>
 
-                        <!-- Step 3: Design -->
-                        <div id="wizard-step-3" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold">Design & Inspiration</h2>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 opacity-90">Describe your vision</label>
-                                <textarea rows="4" placeholder="Theme, colors, special elements..." class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 opacity-90">Upload Inspiration (Optional)</label>
-                                <div class="border-2 border-dashed border-border rounded-xl p-8 text-center bg-secondary/20 hover:bg-secondary/40 transition-colors cursor-pointer">
-                                    <svg class="w-8 h-8 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                                    <span class="text-sm font-medium opacity-90">Click to browse or drag and drop</span>
-                                    <p class="text-xs opacity-50 mt-1">PNG, JPG up to 5MB</p>
+                        <!-- Panel 3: Notifications -->
+                        <div id="settings-notifications" class="settings-panel hidden bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-6">
+                            <h2 class="font-bold text-lg text-primary font-heading border-b border-border pb-3 flex items-center gap-2"><i data-lucide="bell" class="w-5 h-5"></i> Notification Preferences</h2>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-text">Email Order Status Updates</h4>
+                                        <p class="text-xs text-text/60 mt-0.5">Receive invoice details and delivery notifications.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer select-none">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-10 h-6 bg-secondary/30 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-text">SMS Delivery Reminders</h4>
+                                        <p class="text-xs text-text/60 mt-0.5">Get a text message on delivery day with delivery progress.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer select-none">
+                                        <input type="checkbox" checked class="sr-only peer">
+                                        <div class="w-10 h-6 bg-secondary/30 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
+                                </div>
+                                <div class="flex justify-between items-center py-2">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-text">Marketing Offers & Promotions</h4>
+                                        <p class="text-xs text-text/60 mt-0.5">Stay updated with holiday cake specials and discount vouchers.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer select-none">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-10 h-6 bg-secondary/30 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Review &rarr;</button>
+                            <div class="flex justify-end pt-4 border-t border-border">
+                                <button class="bg-primary hover:bg-[#a0723e] text-white py-3 px-8 rounded-xl text-sm font-bold shadow-sm transition-all duration-300" onclick="alert('Notification settings saved!')">Save Preferences</button>
                             </div>
                         </div>
 
-                        <!-- Step 4: Review -->
-                        <div id="wizard-step-4" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold mb-4">Review Your Request</h2>
-                            <div class="bg-secondary/30 rounded-xl p-6 space-y-4 text-sm">
-                                <p><strong>Occasion:</strong> Birthday</p>
-                                <p><strong>Date:</strong> Oct 24, 2026</p>
-                                <p><strong>Guests:</strong> 25</p>
-                                <p><strong>Flavor:</strong> Dark Chocolate w/ Chocolate Ganache</p>
-                                <p><strong>Notes:</strong> Dark themed with gold accents.</p>
+                        <!-- Panel 4: Payment Methods -->
+                        <div id="settings-billing" class="settings-panel hidden bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-6">
+                            <h2 class="font-bold text-lg text-primary font-heading border-b border-border pb-3 flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5"></i> Payment Methods</h2>
+                            
+                            <!-- Saved credit card -->
+                            <div class="relative w-full max-w-sm h-48 bg-gradient-to-r from-amber-600 to-amber-800 rounded-2xl p-6 text-white shadow-md flex flex-col justify-between overflow-hidden">
+                                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-[9px] uppercase tracking-widest opacity-80">Preferred Payment Card</p>
+                                        <p class="text-sm font-bold mt-1">Jane Doe</p>
+                                    </div>
+                                    <span class="text-xs font-black italic bg-white/20 px-3 py-1 rounded-lg">VISA</span>
+                                </div>
+                                <div class="text-lg font-mono tracking-widest my-4">•••• •••• •••• 8924</div>
+                                <div class="flex justify-between items-center text-[10px] font-bold uppercase opacity-90">
+                                    <div>
+                                        <p class="opacity-60 text-[8px]">Expires</p>
+                                        <p>12/29</p>
+                                    </div>
+                                    <button class="bg-white/20 hover:bg-white/35 px-3 py-1.5 rounded-lg text-[9px] uppercase transition-colors" onclick="alert('Card removed')">Remove Card</button>
+                                </div>
                             </div>
-                            <p class="text-sm opacity-90 italic">Note: Submitting this form requests a quote. Our team will review and send an invoice for the deposit.</p>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300" onclick="alert('Order submitted! Check overview tab.')">Submit Request</button>
-                            </div>
+                            <button class="w-full md:w-auto border-2 border-dashed border-border hover:border-primary text-text/80 hover:text-primary py-4 px-6 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2" onclick="alert('Link new payment method...')">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Add New Payment Card
+                            </button>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION: Order History -->
-        <div id="section-history" class="spa-section p-6 md:p-10 max-w-6xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-8">Order History</h1>
-            <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-secondary/30 text-sm opacity-90 border-b border-border">
-                            <th class="p-4 font-medium">Order ID</th>
-                            <th class="p-4 font-medium">Date</th>
-                            <th class="p-4 font-medium">Occasion</th>
-                            <th class="p-4 font-medium">Total</th>
-                            <th class="p-4 font-medium">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm">
-                        <tr class="border-b border-border hover:bg-secondary/10 transition-colors">
-                            <td class="p-4 font-medium text-primary">SC-8924</td>
-                            <td class="p-4">Oct 24, 2026</td>
-                            <td class="p-4">Birthday</td>
-                            <td class="p-4">$120.00</td>
-                            <td class="p-4"><span class="px-2 py-1 bg-accent/20 text-accent rounded text-xs font-bold">Active</span></td>
-                        </tr>
-                        <tr class="border-b border-border hover:bg-secondary/10 transition-colors">
-                            <td class="p-4 font-medium text-primary">SC-7512</td>
-                            <td class="p-4">May 12, 2026</td>
-                            <td class="p-4">Mother's Day</td>
-                            <td class="p-4">$85.00</td>
-                            <td class="p-4"><span class="px-2 py-1 bg-secondary text-primary rounded text-xs font-bold">Completed</span></td>
-                        </tr>
-                        <tr class="hover:bg-secondary/10 transition-colors">
-                            <td class="p-4 font-medium text-primary">SC-6104</td>
-                            <td class="p-4">Dec 10, 2025</td>
-                            <td class="p-4">Holiday Party</td>
-                            <td class="p-4">$250.00</td>
-                            <td class="p-4"><span class="px-2 py-1 bg-secondary text-primary rounded text-xs font-bold">Completed</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- SECTION: Saved Designs -->
-        <div id="section-saved" class="spa-section p-6 md:p-10 max-w-6xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-8">Saved Designs</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Saved item -->
-                <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm group relative">
-                    <img src="../assets/images/wedding_cake_premium.png" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold">Rustic Floral Tier</h3>
-                        <p class="text-xs opacity-90 mt-1">Saved from Wedding Gallery</p>
                     </div>
-                    <button class="absolute top-3 right-3 bg-white dark:bg-[#2a221b] p-2 rounded-full text-red-500 dark:text-red-400 shadow-md hover:bg-red-50 dark:hover:bg-[#3a2f27]">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
-                    </button>
                 </div>
             </div>
-        </div>
 
-        <!-- SECTION: Settings -->
-        <div id="section-settings" class="spa-section p-6 md:p-10 max-w-3xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-8">Settings</h1>
-            <div class="bg-bg border border-border rounded-2xl p-6 shadow-sm space-y-6">
-                <div>
-                    <label class="block text-sm font-medium mb-2 opacity-90">Full Name</label>
-                    <input type="text" value="Jane Doe" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 opacity-90">Email</label>
-                    <input type="email" value="jane@example.com" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-2 opacity-90">Phone</label>
-                    <input type="text" value="(555) 123-4567" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
-                </div>
-                <hr class="border-border">
-                <button class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Save Changes</button>
-            </div>
         </div>
-
     </main>
 
-    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initDashboardSPA();
+            initDashboardTheme();
+            initRTL();
+            initMobileMenu();
+            
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Local SPA Logic
+        function initDashboardSPA() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const sections = document.querySelectorAll('.spa-section');
+            const mobileSidebar = document.getElementById('dashboard-sidebar');
+            const sectionTitleHeader = document.getElementById('section-title-header');
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Switch active section
+                    sections.forEach(sec => sec.classList.remove('active'));
+                    const targetId = link.getAttribute('data-target');
+                    if (targetId) {
+                        const targetSec = document.getElementById(targetId);
+                        if (targetSec) targetSec.classList.add('active');
+                        
+                        // Update Topbar Section Title
+                        if (sectionTitleHeader) {
+                            const linkText = link.querySelector('span').innerText;
+                            sectionTitleHeader.innerText = linkText;
+                        }
+                        
+                        window.history.replaceState(null, null, '#' + targetId.replace('section-', '').replace('admin-', ''));
+                    }
+
+                    // Auto close mobile sidebar
+                    if (mobileSidebar && window.innerWidth < 768) {
+                        mobileSidebar.classList.add('-translate-x-full');
+                    }
+                });
+            });
+
+            // Handle direct hashes
+            if (window.location.hash) {
+                const rawHash = window.location.hash.substring(1);
+                const targetId = 'section-' + rawHash;
+                const activeLink = Array.from(sidebarLinks).find(l => l.getAttribute('data-target') === targetId);
+                if (activeLink) {
+                    activeLink.click();
+                }
+            }
+        }
+
+        function switchToTab(tabId) {
+            const targetId = tabId.startsWith('section-') ? tabId : 'section-' + tabId;
+            const link = Array.from(document.querySelectorAll('.sidebar-link')).find(l => l.getAttribute('data-target') === targetId);
+            if (link) {
+                link.click();
+            }
+        }
+
+        function switchToNewOrderTab() {
+            switchToTab('tracking');
+        }
+
+        // Local Theme Toggle Logic
+        function initDashboardTheme() {
+            const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+            if (themeToggleBtns.length === 0) return;
+
+            const storedTheme = localStorage.getItem('sweetcraft-theme') || 
+                                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+
+            themeToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', currentTheme);
+                    document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+                    localStorage.setItem('sweetcraft-theme', currentTheme);
+                });
+            });
+        }
+
+        // Mobile Menu Button Logic
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('dashboard-mobile-menu-btn');
+            const sidebar = document.getElementById('dashboard-sidebar');
+
+            if (mobileMenuBtn && sidebar) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('-translate-x-full');
+                });
+
+                // Close when clicking outside on mobile
+                document.addEventListener('click', (e) => {
+                    if (window.innerWidth < 768 && !sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        sidebar.classList.add('-translate-x-full');
+                    }
+                });
+            }
+        }
+        // Local RTL/LTR toggle logic
+        function initRTL() {
+            const rtlToggleBtns = document.querySelectorAll('.rtl-toggle');
+            const storedDir = localStorage.getItem('sweetcraft-dir') || 'ltr';
+            
+            document.documentElement.setAttribute('dir', storedDir);
+            
+            rtlToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const currentDir = document.documentElement.getAttribute('dir');
+                    const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+                    document.documentElement.setAttribute('dir', newDir);
+                    localStorage.setItem('sweetcraft-dir', newDir);
+                });
+            });
+        }
+        // Local Settings Tab Switcher
+        function switchSettingsTab(tabId) {
+            const panels = document.querySelectorAll('.settings-panel');
+            const buttons = document.querySelectorAll('.settings-tab-btn');
+            
+            panels.forEach(panel => {
+                if (panel.id === tabId) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
+            
+            buttons.forEach(btn => {
+                const onclickAttr = btn.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes(tabId)) {
+                    btn.classList.add('active', 'bg-secondary/20');
+                    btn.classList.remove('opacity-70');
+                } else {
+                    btn.classList.remove('active', 'bg-secondary/20');
+                    btn.classList.add('opacity-70');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
