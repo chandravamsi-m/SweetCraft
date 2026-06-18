@@ -96,6 +96,7 @@
 [data-theme="dark"] form input[type="email"],
 [data-theme="dark"] form input[type="number"],
 [data-theme="dark"] form input[type="date"],
+[data-theme="dark"] form input[type="password"],
 [data-theme="dark"] form select,
 [data-theme="dark"] form textarea,
 [data-theme="dark"] form input.bg-\[\#fffdf9\],
@@ -104,6 +105,20 @@
   background-color: #1a1612 !important;
   border: 1px solid #3a2f27 !important;
   color: #f0e9e0 !important;
+}
+
+[data-theme="dark"] form input[type="checkbox"] {
+  background-color: #1a1612 !important;
+  border-color: #3a2f27 !important;
+  accent-color: #b5834a !important;
+}
+
+/* Login and Signup pages: inputs contrast adjustment against dark body background */
+[data-theme="dark"] .min-h-screen.bg-bg form input[type="text"],
+[data-theme="dark"] .min-h-screen.bg-bg form input[type="email"],
+[data-theme="dark"] .min-h-screen.bg-bg form input[type="password"] {
+  background-color: #2a221b !important;
+  border-color: #4a3e35 !important;
 }
 
 [data-theme="dark"] form input::placeholder,

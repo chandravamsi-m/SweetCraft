@@ -19,13 +19,15 @@
 }
 
 
-/* Hide global scrollbar */
+/* Hide global scrollbar and container scrollbars */
 html::-webkit-scrollbar,
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
   display: none !important;
 }
 html,
-body {
+body,
+.no-scrollbar {
   -ms-overflow-style: none !important;  /* IE and Edge */
   scrollbar-width: none !important;  /* Firefox */
 }
