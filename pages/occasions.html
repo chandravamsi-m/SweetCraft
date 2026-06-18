@@ -181,60 +181,231 @@
         </div>
     </div>
 
-    
-    <!-- Main Content -->
+       <!-- Main Content -->
     <main class="flex-1 mt-[72px]">
         <!-- Header -->
-        <section class="py-20 bg-secondary/30 text-center border-b border-border dark:border-transparent">
+        <section class="py-20 bg-alternate text-center border-b border-border dark:border-transparent">
             <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-heading font-bold mb-4 text-primary">Shop by Occasion</h1>
-                <p class="text-lg opacity-90 max-w-2xl mx-auto">From elegant weddings to joyful birthdays, we have the perfect centerpiece for your special day.</p>
+                <div class="flex justify-center mb-2.5">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">Occasions</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-primary leading-tight">Shop by Occasion</h1>
+                <p class="text-base md:text-lg text-text opacity-90 max-w-2xl mx-auto leading-relaxed">From elegant weddings to joyful birthdays, we have the perfect centerpiece for your special day.</p>
             </div>
         </section>
 
         <!-- Occasions Grid -->
         <section class="py-20 lg:py-24 bg-bg">
             <div class="container mx-auto px-4 md:px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     
-                    <!-- Occasion Card: Weddings -->
-                    <a href="gallery.html?filter=wedding" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
-                        <img src="../assets/images/occasion_wedding_1781672529558.png" alt="Weddings" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
-                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Weddings & Anniversaries</h2>
-                            <p class="text-white/80 mb-4">Elegant tiered cakes designed to match your theme.</p>
-                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                    <!-- Occasion Card 1: Weddings & Engagements -->
+                    <a href="gallery.html?filter=wedding" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
+                        <img src="../assets/images/occasion_wedding_1781672529558.png" alt="Weddings &amp; Engagements" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Weddings &amp; Engagements</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Elegant multi-tiered masterpieces tailored to match your theme.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
                         </div>
                     </a>
 
-                    <!-- Occasion Card: Birthdays -->
-                    <a href="gallery.html?filter=birthday" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
-                        <img src="../assets/images/chocolate_drip_cake.png" alt="Birthdays" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
-                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Birthdays</h2>
-                            <p class="text-white/80 mb-4">Fun, colorful, and delicious creations for all ages.</p>
-                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                    <!-- Occasion Card 2: Birthdays & Anniversaries -->
+                    <a href="gallery.html?filter=birthday" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
+                        <img src="../assets/images/chocolate_drip_cake.png" alt="Birthdays &amp; Anniversaries" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Birthdays &amp; Anniversaries</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Fun, colorful, and custom-designed drip cakes for all milestone ages.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
                         </div>
                     </a>
 
-                    <!-- Occasion Card: Baby Showers -->
-                    <a href="gallery.html?filter=event" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
-                        <img src="../assets/images/occasion_baby_1781672583388.png" alt="Baby Showers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
-                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Baby Showers</h2>
-                            <p class="text-white/80 mb-4">Adorable cakes, cupcakes, and sweet tables to celebrate new life.</p>
-                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                    <!-- Occasion Card 3: Baby & Bridal Showers -->
+                    <a href="gallery.html?filter=celebration" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
+                        <img src="../assets/images/occasion_baby_1781672583388.png" alt="Baby &amp; Bridal Showers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Baby &amp; Bridal Showers</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Whimsical pastels, custom cookies, and cake spreads to celebrate fresh beginnings.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
                         </div>
                     </a>
 
-                    <!-- Occasion Card: Corporate -->
-                    <a href="gallery.html?filter=event" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow block h-[400px]">
+                    <!-- Occasion Card 4: Corporate Events -->
+                    <a href="gallery.html?filter=corporate" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
                         <img src="../assets/images/occasion_corporate_1781672561343.png" alt="Corporate Events" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-8">
-                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-2">Corporate Events</h2>
-                            <p class="text-white/80 mb-4">Branded cupcakes, macaron towers, and impressive event centerpieces.</p>
-                            <span class="inline-flex items-center gap-2 text-white font-medium group-hover:text-accent transition-colors">View Designs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Corporate Events</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Branded desserts, logo cupcakes, and dessert platters for business milestones.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
                         </div>
+                    </a>
+
+                    <!-- Occasion Card 5: Seasonal & Holidays -->
+                    <a href="gallery.html?filter=pastries" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
+                        <img src="../assets/images/blog_2_1781672613129.png" alt="Seasonal &amp; Holidays" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Seasonal &amp; Holidays</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Themed collections for Thanksgiving, Christmas, Halloween, and spring festivals.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Occasion Card 6: Mini Sweets & Parties -->
+                    <a href="gallery.html?filter=pastries" class="group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block h-[340px] sm:h-[400px]">
+                        <img src="../assets/images/vanilla_cupcakes.png" alt="Mini Sweets &amp; Parties" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white mb-2 group-hover:text-[#f5e6d3] transition-colors leading-tight">Mini Sweets &amp; Parties</h2>
+                            <p class="text-white/85 text-xs sm:text-sm mb-4 leading-relaxed font-light">Artisan cupcakes, gourmet macarons, and bite-sized pastry platters.</p>
+                            <span class="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors">View Designs <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             SECTION: Our Custom Process
+        ======================== -->
+        <section class="py-20 lg:py-24 bg-alternate border-t border-b border-border dark:border-transparent">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider mb-4" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">The Journey</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-4 leading-tight">How We Craft Your Vision</h2>
+                    <p class="text-base text-text opacity-90 leading-relaxed font-light">From initial inspiration to the final display, we guide you through every step of the custom design process.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                    <!-- Step 1 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 text-center flex flex-col items-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <i data-lucide="calendar" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-text mb-3">1. Consult & Share</h3>
+                        <p class="text-sm text-text opacity-90 leading-relaxed font-light">Share your guest count, color scheme, theme, and visual inspirations with our expert planners.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 text-center flex flex-col items-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <i data-lucide="palette" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-text mb-3">2. Custom Design</h3>
+                        <p class="text-sm text-text opacity-90 leading-relaxed font-light">We draft a personalized design concept and propose matching gourmet flavor profiles.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 text-center flex flex-col items-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <i data-lucide="cookie" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-text mb-3">3. Tasting Session</h3>
+                        <p class="text-sm text-text opacity-90 leading-relaxed font-light">Refine design details while tasting our premium organic sponges, fillings, and buttercreams.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 text-center flex flex-col items-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                            <i data-lucide="truck" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-text mb-3">4. Delivery & Setup</h3>
+                        <p class="text-sm text-text opacity-90 leading-relaxed font-light">Our team handles climate-controlled transport and direct setup at your venue for a stress-free day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             SECTION: Testimonials
+        ======================== -->
+        <section class="py-20 lg:py-24 bg-bg">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider mb-4" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">Testimonials</span>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-4 leading-tight">Celebration Stories</h2>
+                    <p class="text-base text-text opacity-90 leading-relaxed font-light">Hear from our clients about how we helped bring sweetness to their milestone occasions.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 mb-5 text-[#b5834a]">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <p class="text-text opacity-90 text-sm sm:text-base italic leading-relaxed font-light mb-6">"SweetCraft made our wedding cake dreams come true! The four-tier floral cake was stunning, and the lemon raspberry layer was the talk of the night. It tasted as incredible as it looked."</p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-border dark:border-border/10">
+                            <div class="w-11 h-11 rounded-xl bg-secondary bg-opacity-40 text-primary flex items-center justify-center font-heading font-bold">EJ</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-text">Eleanor &amp; James</h4>
+                                <p class="text-xs text-text opacity-95">Wedding Celebration</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 mb-5 text-[#b5834a]">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <p class="text-text opacity-90 text-sm sm:text-base italic leading-relaxed font-light mb-6">"We ordered 200 custom logo cupcakes and a full dessert table spread for our annual gala. The team was extremely professional, and the presentation matched our corporate branding perfectly."</p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-border dark:border-border/10">
+                            <div class="w-11 h-11 rounded-xl bg-secondary bg-opacity-40 text-primary flex items-center justify-center font-heading font-bold">TC</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-text">TechCorp Events</h4>
+                                <p class="text-xs text-text opacity-95">Corporate Gala</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="h-full bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 mb-5 text-[#b5834a]">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <p class="text-text opacity-90 text-sm sm:text-base italic leading-relaxed font-light mb-6">"The chocolate drip cake for my daughter's milestone birthday was beautiful and so delicious! Everyone commented on how moist and rich it was. I'll definitely order again next year."</p>
+                        </div>
+                        <div class="flex items-center gap-3.5 pt-4 border-t border-border dark:border-border/10">
+                            <div class="w-11 h-11 rounded-xl bg-secondary bg-opacity-40 text-primary flex items-center justify-center font-heading font-bold">SM</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-text">Sarah Mitchell</h4>
+                                <p class="text-xs text-text opacity-95">Milestone Birthday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             SECTION: CTA Banner (Simplified & Minimalist)
+        ======================== -->
+        <section class="py-20 lg:py-24 bg-alternate text-center">
+            <div class="container mx-auto px-4 md:px-6 relative z-10 max-w-2xl">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-primary mb-6 leading-tight">Planning a special celebration?</h2>
+                <p class="text-sm sm:text-base md:text-lg text-text opacity-90 max-w-xl mx-auto mb-10 font-light leading-relaxed">From intimate bridal showers to grand milestone events, we design custom dessert tables and handcrafted centerpieces that capture your theme perfectly. Let's make it unforgettable.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto sm:max-w-none">
+                    <a href="order-now.html" class="btn-primary py-3 px-8 text-sm hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                        Start My Order <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
+                    </a>
+                    <a href="contact.html" class="btn-secondary py-3 px-8 text-sm hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                        Schedule Consultation
                     </a>
                 </div>
             </div>
@@ -276,7 +447,7 @@
                     <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Newsletter</h3>
                     <p class="text-sm text-text opacity-90 mb-3 leading-relaxed">Subscribe for seasonal flavors and exclusive discounts.</p>
                     <form action="#" class="relative max-w-sm mt-3">
-                        <input type="email" placeholder="Email Address" required class="w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                        <input type="email" placeholder="Email Address" required class="footer-newsletter-input w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                         <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 w-10 shrink-0 rounded-xl bg-[#b5834a] hover:bg-[#926636] text-white flex items-center justify-center transition-all duration-300 shadow-sm" aria-label="Subscribe">
                             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -286,7 +457,7 @@
                     </form>
                 </div>
             </div>
-            <div class="pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="footer-divider pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>&copy; 2026 SweetCraft Bakery. All rights reserved.</p>
                 <div class="flex gap-2.5">
                     <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Instagram">

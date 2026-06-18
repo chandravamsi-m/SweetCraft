@@ -328,6 +328,26 @@ footer .border-t.border-opacity-40 {
   border-color: var(--color-primary) !important;
 }
 
+/* Order Wizard Step Buttons */
+.wizard-step-btn {
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.wizard-step-btn.active {
+  color: var(--color-primary) !important;
+  border-bottom-color: var(--color-primary) !important;
+  font-weight: 700;
+}
+
+/* Wizard Step Panels - hide/show */
+.wizard-step {
+  display: none;
+}
+.wizard-step.active {
+  display: block;
+}
+
+
 
 
 

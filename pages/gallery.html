@@ -447,28 +447,45 @@
             const filterBtns = document.querySelectorAll('[data-filter]');
             const galleryItems = document.querySelectorAll('.gallery-item');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Update active button classes
-                    filterBtns.forEach(b => {
+            const applyFilter = (filter) => {
+                // Update active button classes
+                filterBtns.forEach(b => {
+                    if (b.getAttribute('data-filter') === filter) {
+                        b.classList.remove('filter-inactive');
+                        b.classList.add('filter-active');
+                    } else {
                         b.classList.remove('filter-active');
                         b.classList.add('filter-inactive');
-                    });
-                    btn.classList.remove('filter-inactive');
-                    btn.classList.add('filter-active');
+                    }
+                });
 
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            };
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
                     const filter = btn.getAttribute('data-filter');
-
-                    // Filter items
-                    galleryItems.forEach(item => {
-                        if(filter === 'all' || item.getAttribute('data-category') === filter) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
+                    applyFilter(filter);
                 });
             });
+
+            // Parse URL query parameter 'filter' on load
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialFilter = urlParams.get('filter');
+            if (initialFilter) {
+                // Check if the filter exists among the buttons
+                const exists = Array.from(filterBtns).some(btn => btn.getAttribute('data-filter') === initialFilter);
+                if (exists) {
+                    applyFilter(initialFilter);
+                }
+            }
         });
     </script>
 </body>

@@ -182,145 +182,395 @@
     </div>
 
     
-    <!-- Main Content -->
     <main class="flex-1 mt-[72px]">
-        <!-- Header -->
-        <section class="py-20 bg-secondary/30 text-center border-b border-border dark:border-transparent">
+
+        <!-- ========================
+             SECTION: Hero Banner
+        ======================== -->
+        <section class="py-12 sm:py-16 md:py-20 bg-alternate text-center border-b border-border dark:border-transparent">
             <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-heading font-bold mb-4 text-primary">Order Now</h1>
-                <p class="text-lg opacity-90 max-w-2xl mx-auto">Design your perfect cake and request a custom quote.</p>
+                <div class="flex justify-center mb-2.5">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">Custom Orders</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-primary leading-tight">Build Your Perfect Cake</h1>
+                <p class="text-base md:text-lg text-text opacity-90 max-w-2xl mx-auto leading-relaxed font-light">From intimate celebrations to grand wedding tiers — design your dream cake and we'll bring it to life.</p>
             </div>
         </section>
 
-        <!-- Order Wizard Section -->
-        <section class="py-20 lg:py-24 bg-bg">
-            <div class="container mx-auto px-4 md:px-6">
-                <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl font-heading font-bold text-primary mb-2">Build Your Order</h1>
-            <p class="opacity-90 mb-8">Follow the steps to submit your custom request.</p>
-            
-            <div class="bg-bg border border-border rounded-2xl overflow-hidden shadow-sm">
-                <!-- Wizard Nav -->
-                <div class="flex border-b border-border bg-secondary/20">
-                    <button class="wizard-step-btn active" data-step="1">1. Occasion</button>
-                    <button class="wizard-step-btn" data-step="2">2. Flavor</button>
-                    <button class="wizard-step-btn" data-step="3">3. Design</button>
-                    <button class="wizard-step-btn" data-step="4">4. Review</button>
+        <!-- ========================
+             SECTION: Order Wizard
+        ======================== -->
+        <section class="py-12 sm:py-16 lg:py-24 bg-bg">
+            <div class="container mx-auto px-4 md:px-6 max-w-5xl">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-3 text-primary">Place Your Order</h2>
+                    <p class="text-sm text-text opacity-90 font-light">Follow the steps below to submit your custom cake request. Our team will respond within 24 hours.</p>
                 </div>
-                
-                <div class="p-6 md:p-10">
-                    <form id="order-wizard">
+
+                <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl overflow-hidden shadow-sm">
+                    <!-- Wizard Step Tabs -->
+                    <div class="flex border-b border-border dark:border-border/10 bg-secondary/10 dark:bg-secondary/5 overflow-x-auto">
+                        <button class="wizard-step-btn flex-1 px-4 py-4 text-xs sm:text-sm font-semibold text-text/60 hover:text-primary transition-colors whitespace-nowrap active" data-step="1">
+                            <span class="hidden sm:inline">1. </span>Occasion
+                        </button>
+                        <button class="wizard-step-btn flex-1 px-4 py-4 text-xs sm:text-sm font-semibold text-text/60 hover:text-primary transition-colors whitespace-nowrap" data-step="2">
+                            <span class="hidden sm:inline">2. </span>Flavor
+                        </button>
+                        <button class="wizard-step-btn flex-1 px-4 py-4 text-xs sm:text-sm font-semibold text-text/60 hover:text-primary transition-colors whitespace-nowrap" data-step="3">
+                            <span class="hidden sm:inline">3. </span>Design
+                        </button>
+                        <button class="wizard-step-btn flex-1 px-4 py-4 text-xs sm:text-sm font-semibold text-text/60 hover:text-primary transition-colors whitespace-nowrap" data-step="4">
+                            <span class="hidden sm:inline">4. </span>Review
+                        </button>
+                    </div>
+
+                    <form id="order-wizard" class="p-5 sm:p-8 md:p-12">
+
                         <!-- Step 1: Occasion -->
                         <div id="wizard-step-1" class="wizard-step active space-y-6">
-                            <h2 class="text-xl font-bold">Event Details</h2>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                                    <i data-lucide="calendar" class="w-5 h-5 text-[#b5834a]"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-heading font-bold text-primary">Event Details</h2>
+                                    <p class="text-xs text-text opacity-70 font-light">Tell us about the occasion</p>
+                                </div>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Occasion Type</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Occasion Type</label>
+                                    <select class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                         <option>Birthday</option>
                                         <option>Wedding</option>
                                         <option>Anniversary</option>
-                                        <option>Corporate</option>
+                                        <option>Corporate Event</option>
+                                        <option>Baby Shower</option>
+                                        <option>Graduation</option>
                                         <option>Other</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Event Date</label>
-                                    <input type="date" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Event Date</label>
+                                    <input type="date" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Guest Count</label>
-                                    <input type="number" min="1" placeholder="e.g. 25" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Guest Count</label>
+                                    <input type="number" min="1" placeholder="e.g. 50" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Delivery Method</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Delivery Method</label>
+                                    <select class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                         <option>Store Pickup</option>
-                                        <option>Delivery</option>
+                                        <option>Delivery (+fee)</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="flex justify-end pt-6">
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Next Step &rarr;</button>
+                            <div class="flex justify-end pt-4">
+                                <button type="button" class="btn-primary w-full sm:w-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-next">Next: Flavor &rarr;</button>
                             </div>
                         </div>
 
-                        <!-- Step 2: Flavor (Simplified) -->
+                        <!-- Step 2: Flavor -->
                         <div id="wizard-step-2" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold">Flavor Profile</h2>
-                            <div class="grid grid-cols-1 gap-6">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                                    <i data-lucide="cake" class="w-5 h-5 text-[#b5834a]"></i>
+                                </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Sponge Flavor</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <h2 class="text-xl font-heading font-bold text-primary">Flavor Profile</h2>
+                                    <p class="text-xs text-text opacity-70 font-light">Choose your sponge and filling combination</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Sponge Flavor</label>
+                                    <select class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                         <option>Madagascar Vanilla</option>
                                         <option>Dark Chocolate</option>
                                         <option>Red Velvet</option>
-                                        <option>Lemon</option>
+                                        <option>Lemon Zest</option>
+                                        <option>Salted Caramel</option>
+                                        <option>Pistachio Rose</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Filling</label>
-                                    <select class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Filling</label>
+                                    <select class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                         <option>Vanilla Buttercream</option>
                                         <option>Chocolate Ganache</option>
                                         <option>Raspberry Compote</option>
                                         <option>Cream Cheese</option>
+                                        <option>Salted Caramel</option>
+                                        <option>Lemon Curd</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium mb-2 opacity-90">Dietary Restrictions</label>
-                                    <input type="text" placeholder="e.g. Gluten-Free, Nut Allergy" class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary">
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Number of Tiers</label>
+                                    <select class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                                        <option>1 Tier</option>
+                                        <option>2 Tiers</option>
+                                        <option>3 Tiers</option>
+                                        <option>4+ Tiers</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Dietary Requirements</label>
+                                    <input type="text" placeholder="e.g. Gluten-Free, Vegan, Nut Allergy" class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                                 </div>
                             </div>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Next Step &rarr;</button>
+                            <div class="flex flex-col-reverse sm:flex-row justify-between gap-3 pt-4">
+                                <button type="button" class="btn-secondary w-full sm:w-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-prev">&larr; Back</button>
+                                <button type="button" class="btn-primary w-full sm:w-auto sm:ml-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-next">Next: Design &rarr;</button>
                             </div>
                         </div>
 
                         <!-- Step 3: Design -->
                         <div id="wizard-step-3" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold">Design & Inspiration</h2>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 opacity-90">Describe your vision</label>
-                                <textarea rows="4" placeholder="Theme, colors, special elements..." class="w-full px-4 py-3 rounded-xl border border-border bg-transparent focus:outline-none focus:border-primary"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-2 opacity-90">Upload Inspiration (Optional)</label>
-                                <div class="border-2 border-dashed border-border rounded-xl p-8 text-center bg-secondary/20 hover:bg-secondary/40 transition-colors cursor-pointer">
-                                    <svg class="w-8 h-8 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                                    <span class="text-sm font-medium opacity-90">Click to browse or drag and drop</span>
-                                    <p class="text-xs opacity-50 mt-1">PNG, JPG up to 5MB</p>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                                    <i data-lucide="palette" class="w-5 h-5 text-[#b5834a]"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-heading font-bold text-primary">Design &amp; Inspiration</h2>
+                                    <p class="text-xs text-text opacity-70 font-light">Share your vision for the cake's look and feel</p>
                                 </div>
                             </div>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Review &rarr;</button>
+                            <div>
+                                <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Describe Your Vision</label>
+                                <textarea rows="4" placeholder="Theme, colors, décor elements, inscription..." class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Cake Inscription (Optional)</label>
+                                <input type="text" placeholder='e.g. "Happy 30th, Emma!"' class="w-full px-5 py-3.5 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-text/80 uppercase tracking-wider mb-2">Upload Inspiration Images (Optional)</label>
+                                <div class="border-2 border-dashed border-border rounded-2xl p-8 text-center bg-secondary/10 hover:bg-secondary/20 transition-colors cursor-pointer">
+                                    <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-[#b5834a]/10 flex items-center justify-center">
+                                        <i data-lucide="upload-cloud" class="w-5 h-5 text-[#b5834a]"></i>
+                                    </div>
+                                    <span class="text-sm font-medium text-text opacity-80">Click to browse or drag &amp; drop</span>
+                                    <p class="text-xs text-text opacity-50 mt-1">PNG, JPG, WEBP — up to 5MB each</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col-reverse sm:flex-row justify-between gap-3 pt-4">
+                                <button type="button" class="btn-secondary w-full sm:w-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-prev">&larr; Back</button>
+                                <button type="button" class="btn-primary w-full sm:w-auto sm:ml-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-next">Review &rarr;</button>
                             </div>
                         </div>
 
                         <!-- Step 4: Review -->
                         <div id="wizard-step-4" class="wizard-step space-y-6">
-                            <h2 class="text-xl font-bold mb-4">Review Your Request</h2>
-                            <div class="bg-secondary/30 rounded-xl p-6 space-y-4 text-sm">
-                                <p><strong>Occasion:</strong> Birthday</p>
-                                <p><strong>Date:</strong> Oct 24, 2026</p>
-                                <p><strong>Guests:</strong> 25</p>
-                                <p><strong>Flavor:</strong> Dark Chocolate w/ Chocolate Ganache</p>
-                                <p><strong>Notes:</strong> Dark themed with gold accents.</p>
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                                    <i data-lucide="clipboard-check" class="w-5 h-5 text-[#b5834a]"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-heading font-bold text-primary">Review Your Request</h2>
+                                    <p class="text-xs text-text opacity-70 font-light">Please confirm your details before submitting</p>
+                                </div>
                             </div>
-                            <p class="text-sm opacity-90 italic">Note: Submitting this form requests a quote. Our team will review and send an invoice for the deposit.</p>
-                            <div class="flex justify-between pt-6">
-                                <button type="button" class="px-6 py-3 rounded-full border border-border font-medium wizard-prev">&larr; Back</button>
-                                <button type="button" class="btn-primary py-2 px-5 text-sm hover:scale-105 transition-all duration-300" onclick="alert('Order submitted! Check overview tab.')">Submit Request</button>
+                            <div class="bg-secondary/20 dark:bg-secondary/10 rounded-2xl p-6 space-y-3 text-sm border border-primary/10">
+                                <div class="flex justify-between items-center pb-3 border-b border-border dark:border-border/10">
+                                    <span class="font-bold text-text/70 uppercase tracking-wider text-xs">Occasion</span>
+                                    <span class="font-semibold text-text">Birthday</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-3 border-b border-border dark:border-border/10">
+                                    <span class="font-bold text-text/70 uppercase tracking-wider text-xs">Event Date</span>
+                                    <span class="font-semibold text-text">Oct 24, 2026</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-3 border-b border-border dark:border-border/10">
+                                    <span class="font-bold text-text/70 uppercase tracking-wider text-xs">Guest Count</span>
+                                    <span class="font-semibold text-text">25 guests</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-3 border-b border-border dark:border-border/10">
+                                    <span class="font-bold text-text/70 uppercase tracking-wider text-xs">Flavor</span>
+                                    <span class="font-semibold text-text">Dark Chocolate + Ganache</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-text/70 uppercase tracking-wider text-xs">Delivery</span>
+                                    <span class="font-semibold text-text">Store Pickup</span>
+                                </div>
+                            </div>
+                            <div class="bg-secondary/10 dark:bg-secondary/5 rounded-2xl p-4 border border-primary/10 flex items-start gap-3">
+                                <i data-lucide="info" class="w-4 h-4 text-[#b5834a] mt-0.5 shrink-0"></i>
+                                <p class="text-xs text-text opacity-80 leading-relaxed">Submitting this form sends a quote request. Our team will review and contact you within 24 hours with a personalised invoice for the deposit.</p>
+                            </div>
+                            <div class="flex flex-col-reverse sm:flex-row justify-between gap-3 pt-4">
+                                <button type="button" class="btn-secondary w-full sm:w-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300 wizard-prev">&larr; Back</button>
+                                <button type="button" class="btn-primary w-full sm:w-auto sm:ml-auto py-3 px-7 text-sm hover:scale-105 transition-all duration-300" onclick="showSuccessModal()">
+                                    Submit Request <i data-lucide="send" class="w-4.5 h-4.5 ml-1.5 inline"></i>
+                                </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- ========================
+             SECTION: Why Order With Us
+        ======================== -->
+        <section class="py-12 sm:py-16 lg:py-24 bg-alternate border-t border-border dark:border-transparent">
+            <div class="container mx-auto px-4 md:px-6 max-w-6xl">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+                    <div class="flex justify-center mb-2.5">
+                        <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">Why Choose Us</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-3 text-primary">Crafted With Care</h2>
+                    <p class="text-sm text-text opacity-90 font-light">Every cake is made to order with the finest organic ingredients and artisan techniques.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="leaf" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Organic Ingredients</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">We source the finest organic flour, free-range eggs, and seasonal produce. No artificial flavors, ever.</p>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="palette" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Fully Custom Design</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">From minimalist elegance to elaborate tiered creations — every cake is designed around your unique vision.</p>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="truck" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Reliable Delivery</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">Climate-controlled delivery within 50 miles. Professional on-site setup for multi-tiered wedding cakes.</p>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="clock" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Made to Schedule</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">We never rush a creation. Order 1–2 weeks ahead for celebrations, 3–6 months for weddings.</p>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Allergen Aware</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">Dedicated gluten-free and vegan equipment with full allergen transparency for your peace of mind.</p>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center shrink-0">
+                            <i data-lucide="star" class="w-5 h-5 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Award-Winning</h3>
+                            <p class="text-sm text-text opacity-90 leading-relaxed font-light">Recognized by local food guides and voted best artisan bakery three years running.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- ========================
+             SECTION: How It Works
+        ======================== -->
+        <section class="py-12 sm:py-16 lg:py-24 bg-bg border-t border-border dark:border-transparent">
+            <div class="container mx-auto px-4 md:px-6 max-w-5xl">
+                <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
+                    <div class="flex justify-center mb-2.5">
+                        <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">How It Works</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold mb-3 text-primary">From Request to Celebration</h2>
+                    <p class="text-sm text-text opacity-90 font-light">Our simple four-step process ensures your cake is everything you imagined.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center text-center gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center relative shrink-0">
+                            <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">1</span>
+                            <i data-lucide="clipboard-list" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Submit Request</h3>
+                            <p class="text-xs text-text opacity-80 leading-relaxed font-light">Fill out the order wizard above with your event details and preferences.</p>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center text-center gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center relative shrink-0">
+                            <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">2</span>
+                            <i data-lucide="mail-check" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Receive Quote</h3>
+                            <p class="text-xs text-text opacity-80 leading-relaxed font-light">Our team reviews and sends a personalised quote within 24 hours.</p>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center text-center gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center relative shrink-0">
+                            <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">3</span>
+                            <i data-lucide="credit-card" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Pay Deposit</h3>
+                            <p class="text-xs text-text opacity-80 leading-relaxed font-light">Confirm with a 30% deposit to secure your spot in our baking calendar.</p>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col items-center text-center gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center relative shrink-0">
+                            <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white text-[10px] font-bold">4</span>
+                            <i data-lucide="party-popper" class="w-7 h-7 text-[#b5834a]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-heading font-bold text-primary mb-1.5">Celebrate!</h3>
+                            <p class="text-xs text-text opacity-80 leading-relaxed font-light">We deliver or you collect — and celebrate in style with a cake made just for you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================
+             SECTION: CTA Banner
+        ======================== -->
+        <section class="py-12 sm:py-16 lg:py-20 bg-alternate border-t border-border dark:border-transparent">
+            <div class="container mx-auto px-4 md:px-6 max-w-4xl text-center">
+                <div class="bg-white dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 sm:p-12 shadow-sm">
+                    <div class="flex justify-center mb-5">
+                        <div class="w-14 h-14 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center">
+                            <i data-lucide="sparkles" class="w-6 h-6 text-[#b5834a]"></i>
+                        </div>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-heading font-bold text-primary mb-3">Still Have Questions?</h2>
+                    <p class="text-sm text-text opacity-90 leading-relaxed mb-7 max-w-xl mx-auto font-light">Our team is happy to help you plan the perfect cake. Reach out for a free consultation before placing your order.</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="contact.html" class="btn-secondary py-3 px-8 text-sm hover:scale-105 transition-all duration-300">
+                            <i data-lucide="mail" class="w-4 h-4 mr-1.5 inline"></i> Contact Us
+                        </a>
+                        <a href="#order-wizard" class="btn-primary py-3 px-8 text-sm hover:scale-105 transition-all duration-300">Start Your Order &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -385,6 +635,65 @@
         </div>
     </footer>
 
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-[150] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="modal-backdrop"></div>
+        <!-- Modal Content -->
+        <div class="relative bg-[#fffdf9] dark:bg-[#2a221b] border border-border dark:border-transparent rounded-3xl p-8 max-w-md w-full shadow-2xl text-center transform scale-95 opacity-0 transition-all duration-300 flex flex-col items-center" id="modal-content">
+            <div class="w-16 h-16 rounded-2xl bg-[#b5834a]/10 dark:bg-[#b5834a]/20 flex items-center justify-center mb-5 shrink-0 text-[#b5834a]">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+            <h3 class="text-2xl font-heading font-bold text-primary mb-3">Request Submitted!</h3>
+            <p class="text-sm text-text opacity-90 leading-relaxed mb-6 font-light">Thank you for choosing SweetCraft. Our team will review your details and respond with a personalised quote and deposit invoice within 24 hours.</p>
+            <button id="close-success-btn" class="btn-primary w-full py-3 text-sm hover:scale-105 transition-all duration-300">Close</button>
+        </div>
+    </div>
+
     <script src="../assets/js/main.js"></script>
+    <script>
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger animation on next frame
+            requestAnimationFrame(() => {
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            });
+        }
+
+        function hideSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const content = document.getElementById('modal-content');
+            
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                
+                // Reset order wizard form
+                const form = document.getElementById('order-wizard');
+                if (form) form.reset();
+                
+                // Reload or go to first step
+                window.location.reload();
+            }, 300);
+        }
+
+        document.getElementById('close-success-btn').addEventListener('click', hideSuccessModal);
+        document.getElementById('modal-backdrop').addEventListener('click', hideSuccessModal);
+    </script>
 </body>
 </html>

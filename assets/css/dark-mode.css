@@ -9,14 +9,28 @@
 }
 
 [data-theme="dark"] .glass {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(26, 22, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Suppress navbar borders in dark mode (sticky transition artifact) */
+[data-theme="dark"] #navbar {
+  border: none !important;
+  box-shadow: none !important;
+}
+[data-theme="dark"] #navbar.glass {
+  border: none !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Scrolled solid navbar override in dark mode for mobile viewports */
 @media (max-width: 1023px) {
   [data-theme="dark"] #navbar.glass {
     background-color: #1a1612 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 
@@ -77,6 +91,84 @@
   border-color: var(--color-primary) !important;
 }
 
+/* Form inputs, selects & textareas visibility in dark mode */
+[data-theme="dark"] form input[type="text"],
+[data-theme="dark"] form input[type="email"],
+[data-theme="dark"] form input[type="number"],
+[data-theme="dark"] form input[type="date"],
+[data-theme="dark"] form select,
+[data-theme="dark"] form textarea,
+[data-theme="dark"] form input.bg-\[\#fffdf9\],
+[data-theme="dark"] form select.bg-\[\#fffdf9\],
+[data-theme="dark"] form textarea.bg-\[\#fffdf9\] {
+  background-color: #1a1612 !important;
+  border: 1px solid #3a2f27 !important;
+  color: #f0e9e0 !important;
+}
 
+[data-theme="dark"] form input::placeholder,
+[data-theme="dark"] form textarea::placeholder {
+  color: rgba(240, 233, 224, 0.4) !important;
+}
 
+[data-theme="dark"] form select option {
+  background-color: #1a1612;
+  color: #f0e9e0;
+}
 
+[data-theme="dark"] form input:focus,
+[data-theme="dark"] form select:focus,
+[data-theme="dark"] form textarea:focus,
+[data-theme="dark"] form textarea.bg-\[\#fffdf9\]:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(181, 131, 74, 0.2) !important;
+}
+
+/* Google Maps Iframe Dark Mode Inversion Filter */
+[data-theme="dark"] iframe[src*="google.com/maps"] {
+  filter: brightness(90%) contrast(100%) invert(90%) hue-rotate(180deg) !important;
+}
+
+/* Contact page: outer card container borders transparent in dark mode */
+[data-theme="dark"] .rounded-3xl.border.border-border,
+[data-theme="dark"] .rounded-2xl.border.border-border {
+  border-color: transparent !important;
+}
+
+/* Keep internal section dividers very subtle (not bright beige) */
+[data-theme="dark"] .border-b.border-border {
+  border-bottom-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+[data-theme="dark"] .border-t.border-border {
+  border-top-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Section-level top/bottom dividers between page sections */
+[data-theme="dark"] section.border-t {
+  border-top-color: transparent !important;
+}
+
+/* Order Wizard Step 3 & 4 Dark Mode border & background fixes */
+[data-theme="dark"] #wizard-step-3 .border-dashed {
+  border-color: #3a2f27 !important;
+  background-color: #231d17 !important;
+}
+[data-theme="dark"] #wizard-step-3 .border-dashed:hover {
+  background-color: #2a221b !important;
+}
+[data-theme="dark"] #wizard-step-4 .border-primary\/10 {
+  border-color: #3a2f27 !important;
+}
+[data-theme="dark"] #wizard-step-4 .border-border\/10 {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+[data-theme="dark"] #wizard-step-4 .bg-secondary\/20 {
+  background-color: #231d17 !important;
+}
+[data-theme="dark"] #wizard-step-4 .bg-secondary\/10 {
+  background-color: #231d17 !important;
+}
+[data-theme="dark"] #wizard-step-4 .bg-secondary\/5 {
+  background-color: #1d1813 !important;
+}
