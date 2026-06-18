@@ -181,104 +181,201 @@
         </div>
     </div>
 
-    
     <!-- Main Content -->
     <main class="flex-1 mt-[72px]">
-        
         <!-- Header -->
-        <section class="py-20 bg-secondary/30 text-center border-b border-border dark:border-transparent">
+        <section class="py-20 bg-alternate text-center border-b border-border dark:border-transparent">
             <div class="container mx-auto px-4">
-                <h1 class="text-5xl font-heading font-bold mb-4 text-primary">Our Gallery</h1>
-                <p class="text-lg opacity-90 max-w-2xl mx-auto">A visual feast of our most beloved custom creations. Find inspiration for your next celebration.</p>
+                <div class="flex justify-center mb-2.5">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full border text-primary text-xs font-semibold uppercase tracking-wider" style="background-color: rgba(181, 131, 74, 0.08); border-color: rgba(181, 131, 74, 0.2);">Gallery</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 text-primary leading-tight">Our Creations</h1>
+                <p class="text-base md:text-lg text-text opacity-90 max-w-2xl mx-auto leading-relaxed">Explore our portfolio of handcrafted custom cakes and fine pastries. Filter by category to find your inspiration.</p>
             </div>
         </section>
 
-        <!-- Gallery -->
+        <!-- Gallery Section -->
         <section class="py-20 lg:py-24 bg-bg">
             <div class="container mx-auto px-4 md:px-6">
                 <!-- Filters -->
-                <div class="flex flex-wrap justify-center gap-3 mb-12">
-                    <button class="px-5 py-2 rounded-full font-medium filter-active transition-colors" data-filter="all">All</button>
-                    <button class="px-5 py-2 rounded-full font-medium filter-inactive transition-colors" data-filter="wedding">Wedding</button>
-                    <button class="px-5 py-2 rounded-full font-medium filter-inactive transition-colors" data-filter="birthday">Birthday</button>
-                    <button class="px-5 py-2 rounded-full font-medium filter-inactive transition-colors" data-filter="event">Corporate & Events</button>
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-active" data-filter="all">All</button>
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-inactive" data-filter="wedding">Weddings</button>
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-inactive" data-filter="birthday">Birthdays</button>
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-inactive" data-filter="celebration">Celebrations</button>
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-inactive" data-filter="corporate">Corporate</button>
+                    <button class="px-4 py-1.5 sm:px-5 sm:py-2 rounded-full font-medium text-xs sm:text-sm transition-all duration-300 filter-inactive" data-filter="pastries">Pastries</button>
                 </div>
 
                 <!-- Grid -->
-                <div class="masonry-grid" id="gallery-grid">
-                    <!-- Item 1 (Wedding) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="wedding">
-                        <img src="../assets/images/bakery_hero.png" alt="Floral Wedding Cake" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium mb-2 inline-block">Wedding</span>
-                                <h3 class="text-xl font-heading font-bold">Classic Floral Tiered</h3>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <!-- Item 1: Wedding -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="wedding">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/wedding_cake_premium.png" alt="Classic Floral Tiered Wedding Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Wedding</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Classic Floral Tiered</h3>
+                            <p class="text-sm text-text opacity-90">A three-tier custom vanilla sponge decorated with handmade sugar roses and real gold leaf detailing.</p>
                         </div>
                     </div>
-                    <!-- Item 2 (Birthday) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="birthday">
-                        <img src="../assets/images/chocolate_drip_cake.png" alt="Birthday Drip Cake" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium mb-2 inline-block">Birthday</span>
-                                <h3 class="text-xl font-heading font-bold">Chocolate Raspberry Drip</h3>
-                            </div>
+
+                    <!-- Item 2: Birthday -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="birthday">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/chocolate_drip_cake.png" alt="Chocolate Raspberry Drip Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-accent/20 text-accent text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Birthday</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Chocolate Raspberry Drip</h3>
+                            <p class="text-sm text-text opacity-90">Decadent dark chocolate sponge layered with rich chocolate fudge and decorated with fresh berries.</p>
                         </div>
                     </div>
-                    <!-- Item 3 (Event) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="event">
-                        <img src="../assets/images/vanilla_cupcakes.png" alt="Cupcakes" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-secondary text-primary rounded-full text-xs font-medium mb-2 inline-block">Event</span>
-                                <h3 class="text-xl font-heading font-bold">Vanilla Bean Cupcakes</h3>
-                            </div>
+
+                    <!-- Item 3: Pastries -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="pastries">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/vanilla_cupcakes.png" alt="Vanilla Bean Cupcakes" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Pastries</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Vanilla Bean Cupcakes</h3>
+                            <p class="text-sm text-text opacity-90">Light, fluffy vanilla bean cupcakes topped with silky smooth buttercream swirls and sprinkles.</p>
                         </div>
                     </div>
-                    <!-- Item 4 (Wedding) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="wedding">
-                        <img src="../assets/images/wedding_cake_premium.png" alt="Tiered Wedding Cake" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-primary rounded-full text-xs font-medium mb-2 inline-block">Wedding</span>
-                                <h3 class="text-xl font-heading font-bold">Rustic Buttercream</h3>
-                            </div>
+
+                    <!-- Item 4: Wedding -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="wedding">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/occasion_wedding_1781672529558.png" alt="Bespoke Tiered Wedding Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Wedding</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Bespoke Tiered Cake</h3>
+                            <p class="text-sm text-text opacity-90">A towering vanilla and lemon raspberry cake, decorated with elegant white sugar petals.</p>
                         </div>
                     </div>
-                    <!-- Item 5 (Birthday) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="birthday">
-                        <img src="../assets/images/occasion_birthday_1781672542877.png" alt="Birthday Cake" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-accent rounded-full text-xs font-medium mb-2 inline-block">Birthday</span>
-                                <h3 class="text-xl font-heading font-bold">Strawberry Shortcake</h3>
-                            </div>
+
+                    <!-- Item 5: Birthday -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="birthday">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/occasion_birthday_1781672542877.png" alt="Bright Macaron Birthday Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-accent/20 text-accent text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Birthday</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Bright Macaron Cake</h3>
+                            <p class="text-sm text-text opacity-90">A colorful strawberry cake covered in rich meringue buttercream and topped with fresh french macarons.</p>
                         </div>
                     </div>
-                    <!-- Item 6 (Event) -->
-                    <div class="masonry-item gallery-item relative group rounded-2xl overflow-hidden cursor-pointer shadow-sm" data-category="event">
-                        <img src="../assets/images/blog_3_1781672632144.png" alt="Macarons" class="w-full h-auto group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <span class="px-3 py-1 bg-secondary text-primary rounded-full text-xs font-medium mb-2 inline-block">Event</span>
-                                <h3 class="text-xl font-heading font-bold">Macaron Tower</h3>
-                            </div>
+
+                    <!-- Item 6: Corporate -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="corporate">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/occasion_corporate_1781672561343.png" alt="Corporate Celebration Platter" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-[#b5834a]/20 text-[#b5834a] text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Corporate</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Celebration Platter</h3>
+                            <p class="text-sm text-text opacity-90">Custom logo sugar cookies and mini cupcakes, perfect for corporate milestones and client gifts.</p>
                         </div>
                     </div>
+
+                    <!-- Item 7: Celebration -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="celebration">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/occasion_baby_1781672583388.png" alt="Sweet Baby Shower Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Celebration</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Sweet Baby Shower Cake</h3>
+                            <p class="text-sm text-text opacity-90">A whimsical pastel cake featuring delicate fondant clouds and a cute teddy bear topper.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 8: Celebration -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="celebration">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/flavor_red_velvet_1781672509940.png" alt="Signature Red Velvet Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Celebration</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Signature Red Velvet</h3>
+                            <p class="text-sm text-text opacity-90">Classic red velvet sponge layered with sweet cream cheese frosting and decorated with fresh red velvet crumbs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 9: Celebration -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="celebration">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/flavor_choc_truffle_1781672483083.png" alt="Salted Chocolate Truffle Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Celebration</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Chocolate Truffle</h3>
+                            <p class="text-sm text-text opacity-90">Double chocolate fudge cake coated with dark chocolate ganache and chocolate truffles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 10: Pastries -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="pastries">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/flavor_lemon_rasp_1781672495740.png" alt="Lemon Raspberry Tart" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Pastries</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Lemon Raspberry Tart</h3>
+                            <p class="text-sm text-text opacity-90">Zesty lemon curd filled tart topped with fresh raspberries and a light glaze.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 11: Corporate -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="corporate">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/blog_1_1781672598240.png" alt="Golden Anniversary Cake" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-[#b5834a]/20 text-[#b5834a] text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Corporate</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Golden Anniversary Cake</h3>
+                            <p class="text-sm text-text opacity-90">A sophisticated two-tier gold-brushed cake with dark chocolate detailing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 12: Pastries -->
+                    <div class="h-full gallery-item relative group rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border dark:border-transparent bg-white dark:bg-[#2a221b]" data-category="pastries">
+                        <div class="overflow-hidden relative aspect-[4/3]">
+                            <img src="../assets/images/blog_2_1781672613129.png" alt="Artisan Macaron Box" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="p-6">
+                            <span class="px-2.5 py-1 bg-secondary text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-2.5 inline-block">Pastries</span>
+                            <h3 class="text-xl font-heading font-bold mb-2 text-text">Artisan Macaron Box</h3>
+                            <p class="text-sm text-text opacity-90">An assortment of gourmet macarons, including lavender honey, salted caramel, and pistachio flavors.</p>
+                        </div>
+                    </div>
+
                 </div>
-
-            </div>
-        </section>
-        
-        <!-- CTA Banner -->
-        <section class="py-20 lg:py-24 bg-primary text-white text-center">
-            <div class="container mx-auto px-4 md:px-6">
-                <h2 class="text-3xl font-heading font-bold mb-4">Found something you love?</h2>
-                <a href="order-now.html" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-bg text-primary font-bold hover:bg-secondary transition-colors shadow-lg">Start Your Order</a>
             </div>
         </section>
 
+        <!-- ========================
+             SECTION: CTA Banner (Simplified & Minimalist)
+        ======================== -->
+        <section class="py-20 lg:py-24 bg-alternate text-center">
+            <div class="container mx-auto px-4 md:px-6 relative z-10 max-w-2xl">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-primary mb-6 leading-tight">Inspired by our creations?</h2>
+                <p class="text-sm sm:text-base md:text-lg text-text opacity-90 max-w-xl mx-auto mb-10 font-light leading-relaxed">Let's design a custom masterpiece for your next event. From elegant multi-tiered weddings to colorful birthday showstoppers, we bake your visual dreams into reality.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto sm:max-w-none">
+                    <a href="order-now.html" class="btn-primary py-3 px-8 text-sm hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                        Start My Order <i data-lucide="arrow-right" class="w-4 h-4 ml-1.5"></i>
+                    </a>
+                    <a href="contact.html" class="btn-secondary py-3 px-8 text-sm hover:scale-105 transition-all duration-300 w-full sm:w-auto justify-center">
+                        Schedule Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -316,7 +413,7 @@
                     <h3 class="text-primary font-heading font-bold text-lg mb-4 relative pb-1.5 after:absolute after:bottom-0 after:left-0 after:w-6 after:h-0.5 after:bg-accent">Newsletter</h3>
                     <p class="text-sm text-text opacity-90 mb-3 leading-relaxed">Subscribe for seasonal flavors and exclusive discounts.</p>
                     <form action="#" class="relative max-w-sm mt-3">
-                        <input type="email" placeholder="Email Address" required class="w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
+                        <input type="email" placeholder="Email Address" required class="footer-newsletter-input w-full pl-5 pr-14 py-3 rounded-2xl border border-border border-opacity-90 bg-[#fffdf9] dark:bg-[#1a1612] bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-30 focus:border-primary text-sm transition-all duration-300 text-text shadow-sm">
                         <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 w-10 shrink-0 rounded-xl bg-[#b5834a] hover:bg-[#926636] text-white flex items-center justify-center transition-all duration-300 shadow-sm" aria-label="Subscribe">
                             <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -326,7 +423,7 @@
                     </form>
                 </div>
             </div>
-            <div class="pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="footer-divider pt-6 border-t border-border border-opacity-40 dark:border-border dark:border-opacity-10 text-sm text-text opacity-90 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>&copy; 2026 SweetCraft Bakery. All rights reserved.</p>
                 <div class="flex gap-2.5">
                     <a href="#" class="w-8 h-8 rounded-full bg-secondary bg-opacity-50 dark:bg-[#2e231b] flex items-center justify-center text-[#b5834a] hover:bg-[#b5834a] hover:text-white hover:scale-105 transition-all duration-300 shadow-sm" aria-label="Instagram">

@@ -77,6 +77,25 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   box-shadow: 0 6px 15px rgba(181, 131, 74, 0.15);
 }
 
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background-color: transparent !important;
+  border: 1px solid #fffdf9 !important;
+  color: #fffdf9 !important;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-secondary-light:hover {
+  background-color: #fffdf9 !important;
+  color: var(--color-text) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.15);
+}
+
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -225,6 +244,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   color: white !important;
 }
 
+/* 7. Dropdown Panels Content Reset */
+#navbar.bg-transparent.dark-hero-header nav .absolute a:not(.font-bold) {
+  color: var(--color-text) !important;
+  opacity: 0.9 !important;
+}
+#navbar.bg-transparent.dark-hero-header nav .absolute a:not(.font-bold):hover {
+  color: var(--color-primary) !important;
+  background-color: var(--color-secondary) !important;
+  opacity: 1 !important;
+}
+
 /* Core background color overrides for CDN stability */
 .bg-primary {
   background-color: var(--color-primary) !important;
@@ -241,6 +271,64 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .text-white {
   color: #fffdf9 !important;
 }
+
+.bg-dark-chocolate {
+  background-color: #2e231b !important;
+}
+[data-theme="dark"] .bg-dark-chocolate {
+  background-color: #1a130e !important;
+}
+
+/* Core text color overrides for CDN stability */
+.text-text {
+  color: var(--color-text) !important;
+}
+.text-primary {
+  color: var(--color-primary) !important;
+}
+.text-accent {
+  color: var(--color-accent) !important;
+}
+.text-secondary {
+  color: var(--color-secondary) !important;
+}
+
+/* Footer newsletter input styling */
+.footer-newsletter-input,
+footer form input[type="email"] {
+  background-color: #fffdf9 !important;
+  border-color: var(--color-border) !important;
+}
+.footer-newsletter-input::placeholder,
+footer form input[type="email"]::placeholder {
+  color: rgba(45, 45, 45, 0.6) !important;
+}
+
+/* Footer bottom copyright divider styling */
+.footer-divider,
+footer .border-t.border-opacity-40 {
+  border-color: rgba(181, 131, 74, 0.25) !important;
+}
+
+/* Portfolio Filters */
+.filter-active {
+  background-color: var(--color-primary) !important;
+  color: #fffdf9 !important;
+  border: 1px solid var(--color-primary) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.filter-inactive {
+  background-color: transparent !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+}
+.filter-inactive:hover {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+
 
 
 
