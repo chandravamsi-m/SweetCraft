@@ -21,6 +21,9 @@
   box-shadow: none !important;
 }
 [data-theme="dark"] #navbar.glass {
+  background-color: rgba(26, 22, 18, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: none !important;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) !important;
 }
@@ -293,6 +296,11 @@
   border-bottom: 1px solid #28211a !important;
 }
 
+[data-theme="dark"] header.bg-transparent {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
 [data-theme="dark"] .spa-section .bg-bg,
 [data-theme="dark"] .spa-section table {
   background-color: #1f1a15 !important; /* Lighter container card background to elevate widgets */
@@ -312,5 +320,17 @@
 [data-theme="dark"] .divide-border > :not([hidden]) ~ :not([hidden]) {
   border-color: #2e261f !important;
 }
+
+/* General Secondary Button Dark Mode Contrast Fix */
+[data-theme="dark"] .btn-secondary {
+  border-color: #cda275 !important;
+  color: #cda275 !important;
+}
+[data-theme="dark"] .btn-secondary:hover {
+  background-color: #cda275 !important;
+  color: #1a1612 !important;
+  box-shadow: 0 6px 15px rgba(205, 162, 117, 0.2) !important;
+}
+
 
 

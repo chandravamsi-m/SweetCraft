@@ -159,6 +159,10 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, backdrop-filter 0.3s !important;
+}#navbar.glass {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
 }
 
 /* Solid navbar background on mobile/small screens when scrolled */
@@ -358,6 +362,11 @@ footer .border-t.border-opacity-40 {
 header {
   background-color: #ffffff !important; /* Pure white header to float above beige body */
   border-bottom: 1px solid #ebdcd0 !important;
+}
+
+header.bg-transparent {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
 }
 
 main.flex-1 {

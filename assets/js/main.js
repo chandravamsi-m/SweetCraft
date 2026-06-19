@@ -80,6 +80,15 @@ function initNavbar() {
             mobileMenu.classList.remove('open');
         });
     }
+
+    // Click outside mobile menu to close it
+    document.addEventListener('click', (e) => {
+        if (mobileMenu && mobileMenu.classList.contains('open') && mobileMenuBtn) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+            }
+        }
+    });
     
     initActiveLinks();
 }

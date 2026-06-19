@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon — SweetCraft Bakery</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <script src="../assets/js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ── Animations ── */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50%       { opacity: 0.35; transform: scale(1.08); }
+        }
+        .glow-orb { animation: pulse-glow 6s ease-in-out infinite; }
+
+        /* ── Reset global dashboard-only overrides for this page ── */
+        html { height: 100%; }
+        body {
+            min-height: 100% !important;
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            background-color: var(--color-bg) !important;
+            /* undo dashboard css that forces white header / beige main */
+        }
+        /* global style.css targets header/main.flex-1 — neither exists here */
+
+        /* ── Coming-soon card spacing tightens on small screens ── */
+        @media (max-width: 480px) {
+            .cs-card { padding: 1.25rem !important; }
+            .cs-card .space-y-8 > * + * { margin-top: 1.25rem; }
+            .cs-heading { font-size: 1.6rem !important; line-height: 1.2 !important; }
+        }
+    </style>
+</head>
+
+<!--
+    Layout strategy:
+    - body is a flex column, min-height 100vh.
+    - A single centred wrapper (flex-grow) fills available space and
+      centres the card vertically — no leftover whitespace.
+    - Mobile toggles sit inside the flow (not absolute) so they never overlap.
+-->
+<body class="antialiased text-text relative overflow-y-auto no-scrollbar">
+
+    <!-- Decorative glow orbs (purely visual, pointer-events off) -->
+    <div class="fixed -top-40 -left-40 w-80 h-80 sm:w-96 sm:h-96 bg-primary/10 rounded-full blur-3xl glow-orb pointer-events-none -z-0"></div>
+    <div class="fixed -bottom-40 -right-40 w-80 h-80 sm:w-96 sm:h-96 bg-accent/10 rounded-full blur-3xl glow-orb pointer-events-none -z-0" style="animation-delay:3s"></div>
+
+    <!-- Desktop floating toggles (absolute, only visible ≥ sm) -->
+    <div class="hidden sm:flex fixed top-5 right-5 z-50 items-center gap-2">
+        <button class="rtl-toggle px-3 py-1.5 rounded-xl bg-secondary text-primary hover:opacity-80 text-xs font-bold shadow transition-all" aria-label="Toggle direction">
+            <span class="rtl-only">RTL</span><span class="ltr-only">LTR</span>
+        </button>
+        <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary text-primary hover:opacity-80 flex items-center justify-center shadow transition-all" aria-label="Toggle dark mode">
+            <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+            <i data-lucide="sun"  class="w-4 h-4 block  dark:hidden"></i>
+        </button>
+    </div>
+
+    <!-- ═══════════════════════════════
+         Single centred wrapper
+         flex-grow + flex column + justify-center
+         = fills remaining screen height and centres children
+    ════════════════════════════════ -->
+    <div class="flex-grow flex flex-col items-center justify-center w-full px-4 py-8 relative z-10">
+
+        <!-- Max-width column that holds toggles (mobile) + card + footer -->
+        <div class="w-full max-w-xl flex flex-col gap-4">
+
+            <!-- Mobile toggles (in-flow, above the card) -->
+            <div class="flex sm:hidden justify-end items-center gap-2">
+                <button class="rtl-toggle px-3 py-1.5 rounded-xl bg-secondary text-primary hover:opacity-80 text-xs font-bold shadow transition-all" aria-label="Toggle direction">
+                    <span class="rtl-only">RTL</span><span class="ltr-only">LTR</span>
+                </button>
+                <button class="theme-toggle w-9 h-9 rounded-xl bg-secondary text-primary hover:opacity-80 flex items-center justify-center shadow transition-all" aria-label="Toggle dark mode">
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                    <i data-lucide="sun"  class="w-4 h-4 block  dark:hidden"></i>
+                </button>
+            </div>
+
+            <!-- ── Main Card ── -->
+            <div class="cs-card w-full bg-white dark:bg-[#1f1a15] border border-border rounded-3xl p-6 sm:p-10 shadow-xl text-center space-y-6 sm:space-y-8">
+
+                <!-- Brand logo -->
+                <a href="index.html" class="inline-flex items-center gap-2 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-secondary/50 rounded-xl p-1 group-hover:bg-secondary transition-all">
+                        <img src="../assets/images/logo.svg" alt="SweetCraft Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform">
+                    </div>
+                    <span class="text-2xl sm:text-3xl font-heading font-bold tracking-tight text-primary group-hover:text-accent transition-colors">
+                        Sweet<span class="text-accent italic font-medium group-hover:text-primary transition-colors">Craft</span>
+                    </span>
+                </a>
+
+                <!-- Headline block -->
+                <div class="space-y-3">
+                    <span class="text-accent text-[10px] sm:text-xs font-black tracking-widest uppercase bg-accent/10 px-4 py-1.5 rounded-full inline-block">
+                        Something Sweet is Baking
+                    </span>
+                    <h1 class="cs-heading text-2xl sm:text-4xl md:text-5xl font-heading font-black text-primary leading-tight">
+                        Our New Customizer<br class="hidden sm:block"> is Launching Soon
+                    </h1>
+                    <p class="text-sm sm:text-base opacity-75 max-w-sm mx-auto leading-relaxed">
+                        We are mixing up a fresh online experience so you can design custom tiers, sponge flavours, and details directly in 3D.
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div id="countdown-timer" class="grid grid-cols-4 gap-2 sm:gap-3 w-full max-w-xs mx-auto">
+                    <!-- Days -->
+                    <div class="bg-secondary/20 dark:bg-[#2a221b] border border-border rounded-2xl py-3 px-1 flex flex-col items-center gap-0.5">
+                        <span id="timer-days"    class="text-xl sm:text-3xl font-extrabold text-primary leading-none">12</span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider opacity-50">Days</span>
+                    </div>
+                    <!-- Hours -->
+                    <div class="bg-secondary/20 dark:bg-[#2a221b] border border-border rounded-2xl py-3 px-1 flex flex-col items-center gap-0.5">
+                        <span id="timer-hours"   class="text-xl sm:text-3xl font-extrabold text-primary leading-none">08</span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider opacity-50">Hrs</span>
+                    </div>
+                    <!-- Minutes -->
+                    <div class="bg-secondary/20 dark:bg-[#2a221b] border border-border rounded-2xl py-3 px-1 flex flex-col items-center gap-0.5">
+                        <span id="timer-minutes" class="text-xl sm:text-3xl font-extrabold text-primary leading-none">45</span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider opacity-50">Mins</span>
+                    </div>
+                    <!-- Seconds -->
+                    <div class="bg-secondary/20 dark:bg-[#2a221b] border border-border rounded-2xl py-3 px-1 flex flex-col items-center gap-0.5">
+                        <span id="timer-seconds" class="text-xl sm:text-3xl font-extrabold text-primary leading-none">30</span>
+                        <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider opacity-50">Secs</span>
+                    </div>
+                </div>
+
+                <!-- Email sign-up -->
+                <div class="space-y-2">
+                    <p class="text-xs font-bold opacity-60">Want early access? Drop your email.</p>
+                    <form action="#" class="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto">
+                        <input
+                            type="email"
+                            placeholder="your@email.com"
+                            required
+                            aria-label="Email address"
+                            class="flex-1 min-w-0 px-4 py-3 rounded-2xl border border-border bg-[#fffdf9] dark:bg-[#1a1612] text-text text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 shadow-sm transition-all"
+                        >
+                        <button type="submit" class="btn-primary py-3 px-5 rounded-2xl text-xs font-extrabold uppercase tracking-wider whitespace-nowrap active:scale-95 transition-all shadow">
+                            Notify Me
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- ── /Main Card ── -->
+
+            <!-- Footer -->
+            <footer class="text-center space-y-2 pb-2">
+                <div class="flex justify-center gap-3">
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-xl bg-secondary/50 dark:bg-[#2e231b] flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-sm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-xl bg-secondary/50 dark:bg-[#2e231b] flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-sm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <!-- Twitter / X -->
+                    <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-xl bg-secondary/50 dark:bg-[#2e231b] flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-105 transition-all shadow-sm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                    </a>
+                </div>
+                <p class="text-[10px] font-bold opacity-40 uppercase tracking-widest">&copy; 2026 SweetCraft Bakery. All rights reserved.</p>
+            </footer>
+
+        </div><!-- /max-w column -->
+    </div><!-- /flex-grow wrapper -->
+
+    <!-- ═══ Scripts ═══ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initRTL();
+            initCountdown();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+
+        function initTheme() {
+            const stored = localStorage.getItem('sweetcraft-theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(stored);
+            document.querySelectorAll('.theme-toggle').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(next);
+                    localStorage.setItem('sweetcraft-theme', next);
+                })
+            );
+        }
+        function applyTheme(t) {
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.toggle('dark', t === 'dark');
+        }
+
+        function initRTL() {
+            const stored = localStorage.getItem('sweetcraft-dir') || 'ltr';
+            document.documentElement.setAttribute('dir', stored);
+            document.querySelectorAll('.rtl-toggle').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const next = document.documentElement.getAttribute('dir') === 'ltr' ? 'rtl' : 'ltr';
+                    document.documentElement.setAttribute('dir', next);
+                    localStorage.setItem('sweetcraft-dir', next);
+                })
+            );
+        }
+
+        function initCountdown() {
+            const target = new Date();
+            target.setDate(target.getDate() + 12);
+            const els = {
+                d: document.getElementById('timer-days'),
+                h: document.getElementById('timer-hours'),
+                m: document.getElementById('timer-minutes'),
+                s: document.getElementById('timer-seconds'),
+            };
+            function tick() {
+                const diff = target - Date.now();
+                if (diff < 0) return;
+                els.d.textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+                els.h.textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+                els.m.textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+                els.s.textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+            }
+            tick();
+            setInterval(tick, 1000);
+        }
+    </script>
+</body>
+</html>
