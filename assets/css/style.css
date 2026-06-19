@@ -349,6 +349,29 @@ footer .border-t.border-opacity-40 {
   display: block;
 }
 
+/* Dashboard Layout Contrast & Depth Upgrades (Light Mode) */
+#dashboard-sidebar {
+  background-color: #fcfbfa !important; /* Premium clean warm off-white */
+  border-right: 1px solid #ebdcd0 !important;
+}
+
+header {
+  background-color: #ffffff !important; /* Pure white header to float above beige body */
+  border-bottom: 1px solid #ebdcd0 !important;
+}
+
+main.flex-1 {
+  background-color: #f7f5f0 !important; /* Rich light warm beige background */
+}
+
+/* Make sure dashboard cards are elevated with white backgrounds */
+.spa-section .bg-bg,
+.spa-section table {
+  background-color: #ffffff !important; 
+  box-shadow: 0 4px 12px rgba(45, 45, 45, 0.04) !important;
+  border: 1px solid #ebdcd0 !important;
+}
+
 
 
 

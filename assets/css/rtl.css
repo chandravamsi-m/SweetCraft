@@ -53,3 +53,31 @@
     padding-left: 3.5rem !important; /* Tailwind's pr-14 equivalent */
     padding-right: 1.25rem !important; /* Tailwind's pl-5 equivalent */
 }
+
+/* Dashboard RTL Mobile Sidebar position and transition overrides */
+@media (max-width: 767px) {
+  [dir="rtl"] #dashboard-sidebar {
+    right: 0 !important;
+    left: auto !important;
+    transform: translateX(100%) !important;
+  }
+
+  [dir="rtl"] #dashboard-sidebar.-translate-x-full {
+    transform: translateX(100%) !important;
+  }
+
+  [dir="rtl"] #dashboard-sidebar:not(.-translate-x-full) {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Border swapping for RTL on all screens */
+[dir="rtl"] #dashboard-sidebar {
+  border-left: 1px solid var(--color-border) !important;
+  border-right: none !important;
+}
+
+[data-theme="dark"][dir="rtl"] #dashboard-sidebar {
+  border-left: 1px solid #28211a !important;
+}
+

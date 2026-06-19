@@ -187,3 +187,130 @@
 [data-theme="dark"] #wizard-step-4 .bg-secondary\/5 {
   background-color: #1d1813 !important;
 }
+
+/* Dashboard dark mode card, table, border and button visibility fixes */
+[data-theme="dark"] .spa-section .bg-bg {
+  background-color: #2a221b !important;
+  border: 1px solid #3a2f27 !important;
+}
+
+[data-theme="dark"] .spa-section table {
+  background-color: #2a221b !important;
+  border: 1px solid #3a2f27 !important;
+}
+
+[data-theme="dark"] .spa-section th,
+[data-theme="dark"] .spa-section td,
+[data-theme="dark"] .spa-section tr {
+  border-color: #3a2f27 !important;
+}
+
+[data-theme="dark"] .spa-section .divide-y > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .spa-section .divide-border > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .divide-y > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .divide-border > :not([hidden]) ~ :not([hidden]) {
+  border-color: #3a2f27 !important;
+}
+
+/* Status Pill/Badge overrides for Dark Mode */
+[data-theme="dark"] .bg-green-50,
+[data-theme="dark"] .dark\:bg-green-950\/30 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.25) !important;
+}
+
+[data-theme="dark"] .bg-rose-50,
+[data-theme="dark"] .dark\:bg-rose-950\/30 {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+}
+
+[data-theme="dark"] .bg-amber-50,
+[data-theme="dark"] .dark\:bg-amber-950\/30 {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.25) !important;
+}
+
+[data-theme="dark"] .bg-blue-50,
+[data-theme="dark"] .dark\:bg-blue-950\/30 {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  color: #60a5fa !important;
+  border: 1px solid rgba(59, 130, 246, 0.25) !important;
+}
+
+[data-theme="dark"] .bg-gray-100,
+[data-theme="dark"] .dark\:bg-gray-800 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #9ca3af !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .spa-section button.bg-secondary,
+[data-theme="dark"] .spa-section .bg-secondary {
+  background-color: #3a2f27 !important;
+  color: #f0e9e0 !important;
+}
+
+[data-theme="dark"] .spa-section button.bg-secondary:hover {
+  background-color: #4a3e35 !important;
+}
+
+[data-theme="dark"] .spa-section input,
+[data-theme="dark"] .spa-section select {
+  background-color: #1a1612 !important;
+  border-color: #3a2f27 !important;
+  color: #f0e9e0 !important;
+}
+
+/* CRM Client Search bar dark mode fixes */
+[data-theme="dark"] #client-search {
+  color: #f0e9e0 !important;
+  background-color: transparent !important;
+}
+[data-theme="dark"] #client-search::placeholder {
+  color: rgba(240, 233, 224, 0.4) !important;
+}
+[data-theme="dark"] .bg-secondary\/5 {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Dashboard Layout Contrast & Depth Upgrades (Dark Mode) */
+[data-theme="dark"] body,
+[data-theme="dark"] main.flex-1 {
+  background-color: #120f0c !important; /* Extremely dark warm-charcoal tone for base canvas */
+}
+
+[data-theme="dark"] #dashboard-sidebar {
+  background-color: #1a1612 !important; /* Slightly lighter warm brown-charcoal for sidebar */
+  border-right: 1px solid #28211a !important;
+}
+
+[data-theme="dark"] header {
+  background-color: #1a1612 !important; /* Same as sidebar to anchor top layout */
+  border-bottom: 1px solid #28211a !important;
+}
+
+[data-theme="dark"] .spa-section .bg-bg,
+[data-theme="dark"] .spa-section table {
+  background-color: #1f1a15 !important; /* Lighter container card background to elevate widgets */
+  border: 1px solid #2e261f !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="dark"] .spa-section th,
+[data-theme="dark"] .spa-section td,
+[data-theme="dark"] .spa-section tr {
+  border-color: #2e261f !important;
+}
+
+[data-theme="dark"] .spa-section .divide-y > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .spa-section .divide-border > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .divide-y > :not([hidden]) ~ :not([hidden]),
+[data-theme="dark"] .divide-border > :not([hidden]) ~ :not([hidden]) {
+  border-color: #2e261f !important;
+}
+
+
