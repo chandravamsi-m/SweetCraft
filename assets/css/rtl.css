@@ -81,3 +81,63 @@
   border-left: 1px solid #28211a !important;
 }
 
+/* English Text Alignment & Direction Fixes for RTL Mode */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] p,
+[dir="rtl"] li,
+[dir="rtl"] label {
+  direction: ltr !important;
+  text-align: right;
+}
+
+[dir="rtl"] .text-center,
+[dir="rtl"] .text-center * {
+  text-align: center !important;
+}
+
+[dir="rtl"] .text-left,
+[dir="rtl"] .text-left * {
+  text-align: right !important;
+}
+
+@media (min-width: 640px) {
+  [dir="rtl"] .sm\:text-left,
+  [dir="rtl"] .sm\:text-left * {
+    text-align: right !important;
+  }
+}
+
+@media (min-width: 768px) {
+  [dir="rtl"] .md\:text-left,
+  [dir="rtl"] .md\:text-left * {
+    text-align: right !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  [dir="rtl"] .lg\:text-left,
+  [dir="rtl"] .lg\:text-left * {
+    text-align: right !important;
+  }
+}
+
+[dir="rtl"] .btn-primary,
+[dir="rtl"] .btn-secondary,
+[dir="rtl"] .btn-secondary-light,
+[dir="rtl"] button {
+  direction: ltr !important;
+}
+
+/* Flip right/left arrows in RTL mode */
+[dir="rtl"] i[data-lucide="arrow-right"],
+[dir="rtl"] i[data-lucide="chevron-right"],
+[dir="rtl"] i[data-lucide="arrow-left"],
+[dir="rtl"] i[data-lucide="chevron-left"] {
+  transform: scaleX(-1) !important;
+}
+

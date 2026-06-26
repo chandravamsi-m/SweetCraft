@@ -36,7 +36,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+            <nav class="hidden lg:flex items-center lg:gap-4 xl:gap-8 font-medium text-sm">
                 <!-- Home Dropdown -->
                 <div class="relative group cursor-pointer">
                     <span class="hover:text-primary transition-colors flex items-center gap-1">
@@ -68,8 +68,8 @@
             </nav>
 
             <!-- Actions -->
-            <div class="hidden lg:flex items-center gap-3">
-                <button class="rtl-toggle px-3.5 py-2 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
+            <div class="hidden lg:flex items-center lg:gap-2 xl:gap-3">
+                <button class="rtl-toggle lg:px-2.5 lg:py-1.5 xl:px-3.5 xl:py-2 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm" aria-label="Toggle Layout Direction">
                     <span class="rtl-only">RTL</span>
                     <span class="ltr-only">LTR</span>
                 </button>
@@ -77,8 +77,8 @@
                     <i data-lucide="moon" class="w-4.5 h-4.5 hidden dark:block"></i>
                     <i data-lucide="sun" class="w-4.5 h-4.5 block dark:hidden"></i>
                 </button>
-                <a href="login.html" class="btn-secondary py-2 px-5 text-sm hover:scale-105 transition-all duration-300">Login</a>
-                <a href="order-now.html" class="btn-primary py-2.5 px-6 text-sm font-semibold hover:scale-105 transition-all duration-300">Order Now &rarr;</a>
+                <a href="login.html" class="btn-secondary lg:py-1.5 lg:px-3.5 xl:py-2 xl:px-5 text-sm hover:scale-105 transition-all duration-300">Login</a>
+                <a href="order-now.html" class="btn-primary lg:py-2 lg:px-4 xl:py-2.5 xl:px-6 text-sm font-semibold hover:scale-105 transition-all duration-300">Order Now &rarr;</a>
             </div>
 
             <!-- Mobile Actions -->
@@ -91,7 +91,7 @@
     </header>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 w-80 bg-[#fffdf9] dark:bg-[#1a1612] shadow-2xl z-[100] flex flex-col">
+    <div id="mobile-menu" class="lg:hidden fixed inset-y-0 w-80 bg-[#fffdf9] dark:bg-[#1a1612] z-[100] flex flex-col">
         <div class="flex items-center justify-between p-5 border-b border-border">
             <span class="text-xl font-heading font-bold text-primary">Menu</span>
             <button id="close-menu-btn" class="p-2 rounded-xl hover:bg-secondary hover:bg-opacity-90 text-text text-opacity-90 hover:text-primary transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
