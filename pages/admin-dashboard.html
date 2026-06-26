@@ -85,10 +85,10 @@
         }
     </style>
 </head>
-<body class="antialiased h-screen bg-bg flex flex-col md:flex-row overflow-hidden no-scrollbar">
+<body class="antialiased h-screen bg-bg flex flex-col lg:flex-row overflow-hidden no-scrollbar">
 
     <!-- Sidebar -->
-    <aside id="dashboard-sidebar" class="w-64 md:w-56 lg:w-60 bg-bg border-r border-border flex flex-col h-screen absolute left-0 top-0 md:relative z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-xl md:shadow-none shrink-0">
+    <aside id="dashboard-sidebar" class="w-64 lg:w-60 bg-bg border-r border-border flex flex-col h-screen absolute left-0 top-0 lg:relative z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 shadow-xl lg:shadow-none shrink-0">
         <!-- Sidebar Brand/Header -->
         <a href="index.html" class="p-6 border-b border-border flex items-center gap-1.5 cursor-pointer hover:opacity-90 transition-opacity group">
             <div class="relative w-11 h-11 flex items-center justify-center bg-secondary bg-opacity-50 rounded-xl p-1 shrink-0 group-hover:bg-secondary transition-all duration-300">
@@ -123,7 +123,7 @@
             </a>
             <div class="pt-4 mt-4 border-t border-border">
                 <!-- Mobile Preferences (RTL & Dark Mode) -->
-                <div class="flex md:hidden items-center justify-between gap-2 mb-4 px-2.5">
+                <div class="flex lg:hidden items-center justify-between gap-2 mb-4 px-2.5">
                     <span class="text-xs font-bold text-text opacity-70">Preferences</span>
                     <div class="flex items-center gap-2">
                         <button class="rtl-toggle h-8 px-3 rounded-lg bg-secondary/50 text-primary hover:bg-secondary transition-all text-xs font-bold flex items-center justify-center" aria-label="Toggle Layout Direction">
@@ -151,7 +151,7 @@
         <header class="bg-bg border-b border-border py-6 px-6 md:px-8 flex justify-between items-center sticky top-0 z-30 shrink-0">
             <div class="flex items-center gap-3">
                 <!-- Mobile menu toggle button (hamburger) -->
-                <button id="dashboard-mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-secondary text-text">
+                <button id="dashboard-mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-secondary text-text">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
                 <h2 id="section-title-header" class="text-lg font-bold text-primary font-heading">Overview</h2>
@@ -159,12 +159,12 @@
             
             <div class="flex items-center gap-4">
                 <!-- RTL toggle -->
-                <button class="rtl-toggle hidden md:flex h-9 px-4 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm items-center justify-center" aria-label="Toggle Layout Direction">
+                <button class="rtl-toggle hidden lg:flex h-9 px-4 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 text-xs font-bold shadow-sm items-center justify-center" aria-label="Toggle Layout Direction">
                     <span class="rtl-only">RTL</span>
                     <span class="ltr-only">LTR</span>
                 </button>
                 <!-- Dark Mode Toggle -->
-                <button class="theme-toggle hidden md:flex w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
+                <button class="theme-toggle hidden lg:flex w-9 h-9 rounded-xl bg-secondary bg-opacity-40 text-primary hover:bg-secondary transition-all duration-300 items-center justify-center shadow-sm" aria-label="Toggle Dark Mode">
                     <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
                     <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
                 </button>
@@ -1149,7 +1149,7 @@
                     }
 
                     // Auto close mobile sidebar
-                    if (mobileSidebar && window.innerWidth < 768) {
+                    if (mobileSidebar && window.innerWidth < 1024) {
                         mobileSidebar.classList.add('-translate-x-full');
                     }
                 });
@@ -1227,7 +1227,7 @@
 
                 // Close when clicking outside on mobile
                 document.addEventListener('click', (e) => {
-                    if (window.innerWidth < 768 && !sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                         sidebar.classList.add('-translate-x-full');
                     }
                 });

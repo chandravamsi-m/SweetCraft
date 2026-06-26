@@ -40,13 +40,15 @@
 }
 
 /* Newsletter Button RTL Alignment */
-[dir="rtl"] .newsletter-btn {
+[dir="rtl"] .newsletter-btn,
+[dir="rtl"] input.footer-newsletter-input ~ button {
     right: auto !important;
     left: 0.375rem !important; /* Tailwind's right-1.5 equivalent */
 }
 
-[dir="rtl"] .newsletter-btn i {
-    transform: rotate(180deg);
+[dir="rtl"] .newsletter-btn i,
+[dir="rtl"] input.footer-newsletter-input ~ button i {
+    transform: rotate(180deg) !important;
 }
 
 [dir="rtl"] form input[type="email"] {

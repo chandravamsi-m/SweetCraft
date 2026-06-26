@@ -381,6 +381,13 @@ main.flex-1 {
   border: 1px solid #ebdcd0 !important;
 }
 
+/* Active Navigation Links styling */
+.active-link {
+  color: var(--color-primary) !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+
 
 
 

@@ -24,10 +24,11 @@ function initTheme() {
     
     themeToggleBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', currentTheme);
-            document.documentElement.classList.toggle('dark', currentTheme === 'dark');
-            localStorage.setItem('sweetcraft-theme', currentTheme);
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            document.documentElement.classList.toggle('dark', next === 'dark');
+            localStorage.setItem('sweetcraft-theme', next);
         });
     });
 }
@@ -112,13 +113,13 @@ function initActiveLinks() {
         const linkPage = getPageName(link.getAttribute('href') || '');
         if (linkPage === currentPage && linkPage !== '') {
             // Updated active styling
-            link.classList.add('text-[#b5834a]', 'font-bold');
+            link.classList.add('text-[#b5834a]', 'font-bold', 'active-link');
             link.classList.remove('text-text', 'opacity-80', 'hover:text-primary');
             const parentGroup = link.closest('.group');
             if (parentGroup) {
                 const trigger = parentGroup.querySelector('span');
                 if (trigger) {
-                    trigger.classList.add('text-[#b5834a]', 'font-bold');
+                    trigger.classList.add('text-[#b5834a]', 'font-bold', 'active-link');
                     trigger.classList.remove('hover:text-primary');
                 }
             }
@@ -130,14 +131,14 @@ function initActiveLinks() {
     mobileLinks.forEach(link => {
         const linkPage = getPageName(link.getAttribute('href') || '');
         if (linkPage === currentPage && linkPage !== '') {
-            link.classList.add('text-[#b5834a]', 'font-bold');
+            link.classList.add('text-[#b5834a]', 'font-bold', 'active-link');
             link.classList.remove('text-text', 'opacity-80', 'hover:text-primary');
             const details = link.closest('details');
             if (details) {
                 details.setAttribute('open', '');
                 const summary = details.querySelector('summary');
                 if (summary) {
-                    summary.classList.add('text-[#b5834a]', 'font-bold');
+                    summary.classList.add('text-[#b5834a]', 'font-bold', 'active-link');
                     summary.classList.remove('text-text', 'hover:bg-secondary', 'hover:bg-opacity-60');
                 }
             }
